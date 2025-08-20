@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -20,40 +19,59 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
+        accent: "bg-accent hover:bg-accent/90 text-accent-foreground",
+        primary: "bg-primary hover:bg-primary/90 text-primary-foreground",
+        custom: "",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        md: "h-10 rounded-md px-4 py-2 has-[>svg]:px-3",
+        lg: "h-12 rounded-lg px-8 py-4 text-lg has-[>svg]:px-6",
+        xl: "h-14 rounded-lg px-10 py-5 text-xl has-[>svg]:px-8",
         icon: "size-9",
+        iconSm: "size-8",
+        iconMd: "size-10",
+        iconLg: "size-12",
+        iconXl: "size-14",
+      },
+      radius: {
+        none: "rounded-none",
+        sm: "rounded-sm",
+        md: "rounded-md",
+        lg: "rounded-lg",
+        xl: "rounded-xl",
+        "2xl": "rounded-2xl",
+        full: "rounded-full",
       },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
+      radius: "md",
     },
   }
 )
 
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
-  const Comp = asChild ? Slot : "button"
-
-  return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
-  )
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
 }
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, radius, asChild = false, ...props }, ref) => {
+    return (
+      <button
+        data-slot="button"
+        className={cn(buttonVariants({ variant, size, radius, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+
+Button.displayName = "Button"
 
 export { Button, buttonVariants }

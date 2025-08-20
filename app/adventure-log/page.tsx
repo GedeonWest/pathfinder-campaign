@@ -173,7 +173,7 @@ export default function AdventureLogPage() {
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="font-serif text-4xl md:text-6xl font-bold text-primary mb-6 tracking-wide">
-            Chronicle of Maxi Mummies
+            Chronicle of Маски Мумии
           </h1>
           <p className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto font-sans leading-relaxed">
             The recorded adventures of brave souls who dare to disturb the eternal rest of ancient pharaohs

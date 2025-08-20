@@ -12,7 +12,7 @@ const openSans = Open_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Maxi Mummies Campaign - Pathfinder Adventure",
+  title: "Маски Мумии Campaign - Pathfinder Adventure",
   description: "Enter the ancient world of Egyptian mysteries in our Pathfinder Mummy's Mask campaign",
   generator: "v0.app",
 }

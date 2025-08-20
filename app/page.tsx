@@ -5,6 +5,7 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import { Points, PointMaterial } from "@react-three/drei"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { TestComponents } from "@/components/test-components"
 import type * as THREE from "three"
 
 // Sand particle system for preloader with reveal effect
@@ -135,10 +136,12 @@ export default function HomePage() {
 
           <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
             <div className="mb-8">
-              <PyramidIcon className="w-24 h-24 mx-auto text-primary mb-6" />
+              <svg className="w-24 h-24 mx-auto text-primary mb-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L2 22h20L12 2zm0 4.5L18.5 20h-13L12 6.5z" />
+              </svg>
             </div>
 
-            <h1 className="font-serif text-5xl md:text-7xl font-bold text-primary mb-4 tracking-wide">Maxi Mummies</h1>
+            <h1 className="font-serif text-5xl md:text-7xl font-bold text-primary mb-4 tracking-wide">Маски Мумии</h1>
             <h2 className="font-serif text-xl md:text-3xl text-primary/90 mb-8">Campaign</h2>
             <p className="text-lg md:text-xl text-foreground mb-12 max-w-2xl mx-auto font-sans">Pathfinder Adventure</p>
 
@@ -152,7 +155,9 @@ export default function HomePage() {
                 })
               }}
             >
-              <PyramidIcon className="w-5 h-5 mr-2" />
+              <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L2 22h20L12 2zm0 4.5L18.5 20h-13L12 6.5z" />
+              </svg>
               Explore the Campaign
             </Button>
           </div>
