@@ -1,0 +1,359 @@
+@import '../base/variables';
+
+// Утилиты для скрытия элементов
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only-focusable {
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+// Утилиты для фокуса
+.focus-visible {
+  outline: 2px solid color(primary, 500);
+  outline-offset: 2px;
+}
+
+.focus-visible-inset {
+  outline: 2px solid color(primary, 500);
+  outline-offset: -2px;
+}
+
+.focus-visible-none {
+  outline: none;
+}
+
+// Утилиты для высокого контраста
+.high-contrast {
+  @media (prefers-contrast: high) {
+    border: 2px solid currentColor;
+  }
+}
+
+// Утилиты для уменьшенного движения
+.reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Утилиты для темной темы
+.dark-mode {
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
+
+// Утилиты для печати
+.print-only {
+  display: none;
+  
+  @media print {
+    display: block;
+  }
+}
+
+.print-hidden {
+  @media print {
+    display: none !important;
+  }
+}
+
+// Утилиты для скринридеров
+.sr-text {
+  @extend .sr-only;
+}
+
+.sr-text-focusable {
+  @extend .sr-only-focusable;
+}
+
+// Утилиты для ARIA
+[aria-hidden="true"] {
+  display: none !important;
+}
+
+[aria-expanded="false"] .expandable-content {
+  display: none;
+}
+
+[aria-expanded="true"] .expandable-content {
+  display: block;
+}
+
+// Утилиты для клавиатурной навигации
+.keyboard-navigation {
+  .focusable:focus {
+    outline: 2px solid color(primary, 500);
+    outline-offset: 2px;
+  }
+}
+
+// Утилиты для skip links
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: color(primary, 600);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: map-get($border-radius, md);
+  z-index: map-get($z-index, skipLink);
+  
+  &:focus {
+    top: 6px;
+  }
+}
+
+// Утилиты для лейблов
+.label-required::after {
+  content: ' *';
+  color: color(error);
+}
+
+.label-optional::after {
+  content: ' (опционально)';
+  color: color(neutral, 500);
+  font-size: map-get($font-sizes, sm);
+}
+
+// Утилиты для состояний
+.state-loading {
+  position: relative;
+  color: transparent;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+.state-error {
+  border-color: color(error);
+  color: color(error);
+  
+  &::placeholder {
+    color: color(error, 300);
+  }
+}
+
+.state-success {
+  border-color: color(success);
+  color: color(success);
+}
+
+.state-warning {
+  border-color: color(warning);
+  color: color(warning);
+}
+
+// Утилиты для анимаций с учетом accessibility
+.animate-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fadeIn map-get($transitions, normal) map-get($easing, out);
+  }
+}
+
+.animate-reduced {
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    transition: none;
+  }
+}
+
+// Утилиты для цветового контраста
+.contrast-high {
+  background-color: color(neutral, 900);
+  color: color(neutral, 50);
+}
+
+.contrast-medium {
+  background-color: color(neutral, 700);
+  color: color(neutral, 100);
+}
+
+.contrast-low {
+  background-color: color(neutral, 300);
+  color: color(neutral, 800);
+}
+
+// Утилиты для размеров текста
+.text-size-adjustable {
+  font-size: clamp(
+    map-get($font-sizes, base),
+    4vw,
+    map-get($font-sizes, xl)
+  );
+}
+
+// Утилиты для line-height
+.line-height-tight {
+  line-height: map-get($line-heights, tight);
+}
+
+.line-height-normal {
+  line-height: map-get($line-heights, normal);
+}
+
+.line-height-relaxed {
+  line-height: map-get($line-heights, relaxed);
+}
+
+// Утилиты для spacing
+.spacing-tight {
+  letter-spacing: -0.025em;
+}
+
+.spacing-normal {
+  letter-spacing: normal;
+}
+
+.spacing-wide {
+  letter-spacing: 0.025em;
+}
+
+// Утилиты для word-break
+.word-break-normal {
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.word-break-all {
+  word-break: break-all;
+}
+
+.word-break-keep {
+  word-break: keep-all;
+}
+
+// Утилиты для text-wrap
+.text-wrap-balance {
+  text-wrap: balance;
+}
+
+.text-wrap-pretty {
+  text-wrap: pretty;
+}
+
+.text-wrap-stable {
+  text-wrap: stable;
+}
+
+// Утилиты для selection
+.selection-primary::selection {
+  background-color: color(primary, 200);
+  color: color(neutral, 900);
+}
+
+.selection-secondary::selection {
+  background-color: color(secondary, 200);
+  color: color(neutral, 900);
+}
+
+// Утилиты для focus-visible
+.focus-visible-primary:focus-visible {
+  outline: 2px solid color(primary, 500);
+  outline-offset: 2px;
+}
+
+.focus-visible-secondary:focus-visible {
+  outline: 2px solid color(secondary, 500);
+  outline-offset: 2px;
+}
+
+.focus-visible-error:focus-visible {
+  outline: 2px solid color(error);
+  outline-offset: 2px;
+}
+
+// Утилиты для hover
+.hover-lift {
+  @media (hover: hover) {
+    transition: transform map-get($transitions, normal) map-get($easing, out);
+    
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+}
+
+.hover-scale {
+  @media (hover: hover) {
+    transition: transform map-get($transitions, normal) map-get($easing, out);
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+// Утилиты для touch устройств
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.touch-target-large {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+// Утилиты для скроллбара
+.scrollbar-accessible {
+  scrollbar-width: thin;
+  scrollbar-color: color(neutral, 400) color(neutral, 100);
+  
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: color(neutral, 100);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: color(neutral, 400);
+    border-radius: map-get($border-radius, full);
+    
+    &:hover {
+      background: color(neutral, 500);
+    }
+  }
+}
+
+// Анимация для loading состояния
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+} 

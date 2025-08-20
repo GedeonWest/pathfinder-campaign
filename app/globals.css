@@ -1,0 +1,259 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Enhanced color tokens with better contrast - removed gray backgrounds */
+  --background: oklch(0.05 0 0); /* Very dark marble background */
+  --foreground: oklch(0.95 0.05 85); /* Warm gold-tinted white for better readability */
+  --card: oklch(0.12 0.02 45); /* Dark warm card background instead of gray */
+  --card-foreground: oklch(0.92 0.08 85); /* Bright gold-tinted text on cards */
+  --popover: oklch(0.12 0.02 45); /* Dark warm popover */
+  --popover-foreground: oklch(0.92 0.08 85); /* Bright gold-tinted text */
+  --primary: oklch(0.82 0.18 85); /* Bright Egyptian gold */
+  --primary-foreground: oklch(0.08 0 0); /* Very dark text on gold */
+  --secondary: oklch(0.55 0.15 45); /* Warm sienna accent */
+  --secondary-foreground: oklch(0.95 0.05 85); /* Gold-tinted white on sienna */
+  --muted: oklch(0.18 0.03 45); /* Dark warm muted instead of gray */
+  --muted-foreground: oklch(0.85 0.08 85); /* Bright readable text */
+  --accent: oklch(0.55 0.15 45); /* Warm sienna for accents */
+  --accent-foreground: oklch(0.95 0.05 85); /* Gold-tinted white on accent */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.95 0.05 85);
+  --border: oklch(0.25 0.08 85); /* Subtle gold borders */
+  --input: oklch(0.15 0.02 45); /* Dark warm input background */
+  --ring: oklch(0.82 0.18 85); /* Bright gold focus ring */
+  --chart-1: oklch(0.8 0.2 60);
+  --chart-2: oklch(0.7 0.18 40);
+  --chart-3: oklch(0.6 0.15 30);
+  --chart-4: oklch(0.5 0.12 20);
+  --chart-5: oklch(0.4 0.1 10);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.08 0 0);
+  --sidebar-foreground: oklch(0.95 0.05 85);
+  --sidebar-primary: oklch(0.82 0.18 85);
+  --sidebar-primary-foreground: oklch(0.08 0 0);
+  --sidebar-accent: oklch(0.55 0.15 45);
+  --sidebar-accent-foreground: oklch(0.95 0.05 85);
+  --sidebar-border: oklch(0.25 0.08 85);
+  --sidebar-ring: oklch(0.82 0.18 85);
+  /* Updated font variables to use Georgia and Open Sans */
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-open-sans), "Open Sans", sans-serif;
+}
+
+.dark {
+  /* Enhanced dark mode with warm tones instead of grays */
+  --background: oklch(0.02 0 0); /* Very dark marble */
+  --foreground: oklch(0.95 0.05 85); /* Warm gold-tinted white */
+  --card: oklch(0.08 0.02 45); /* Dark warm card background */
+  --card-foreground: oklch(0.92 0.08 85); /* Bright gold-tinted text */
+  --popover: oklch(0.08 0.02 45); /* Dark warm popover */
+  --popover-foreground: oklch(0.92 0.08 85); /* Bright gold-tinted text */
+  --primary: oklch(0.85 0.2 85); /* Very bright gold for dark mode */
+  --primary-foreground: oklch(0.05 0 0); /* Very dark text on gold */
+  --secondary: oklch(0.58 0.18 45); /* Brighter sienna */
+  --secondary-foreground: oklch(0.95 0.05 85); /* Gold-tinted white */
+  --muted: oklch(0.15 0.03 45); /* Dark warm muted */
+  --muted-foreground: oklch(0.85 0.08 85); /* Bright readable text */
+  --accent: oklch(0.58 0.18 45); /* Brighter sienna accent */
+  --accent-foreground: oklch(0.95 0.05 85); /* Gold-tinted white */
+  --destructive: oklch(0.65 0.28 25);
+  --destructive-foreground: oklch(0.95 0.05 85);
+  --border: oklch(0.22 0.08 85); /* Subtle gold borders */
+  --input: oklch(0.12 0.02 45); /* Dark warm input */
+  --ring: oklch(0.85 0.2 85); /* Very bright gold focus ring */
+  --chart-1: oklch(0.85 0.22 60);
+  --chart-2: oklch(0.75 0.2 40);
+  --chart-3: oklch(0.65 0.18 30);
+  --chart-4: oklch(0.55 0.15 20);
+  --chart-5: oklch(0.45 0.12 10);
+  --sidebar: oklch(0.05 0 0);
+  --sidebar-foreground: oklch(0.95 0.05 85);
+  --sidebar-primary: oklch(0.85 0.2 85);
+  --sidebar-primary-foreground: oklch(0.05 0 0);
+  --sidebar-accent: oklch(0.58 0.18 45);
+  --sidebar-accent-foreground: oklch(0.95 0.05 85);
+  --sidebar-border: oklch(0.22 0.08 85);
+  --sidebar-ring: oklch(0.85 0.2 85);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  /* Updated font mappings for Georgia and Open Sans */
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Increased minimum font size for better readability */
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* Enhanced marble texture with warmer tones */
+  .marble-bg {
+    background: radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.18) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(160, 82, 45, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(139, 69, 19, 0.1) 0%, transparent 70%),
+      linear-gradient(135deg, rgba(5, 3, 0, 0.98) 0%, rgba(20, 15, 10, 0.95) 100%);
+  }
+
+  /* Enhanced typography with better contrast and readability */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    line-height: 1.3;
+    /* Stronger gold text shadow for better contrast */
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 2px 4px rgba(0, 0, 0, 0.8);
+    color: var(--primary);
+  }
+
+  h1 {
+    font-size: 2.25rem; /* 36px - increased for better hierarchy */
+  }
+
+  h2 {
+    font-size: 2rem; /* 32px */
+  }
+
+  h3 {
+    font-size: 1.5rem; /* 24px */
+  }
+
+  p,
+  span,
+  div {
+    font-family: var(--font-sans);
+    font-size: 1.125rem; /* 18px - increased for better readability */
+    line-height: 1.7;
+    color: var(--foreground);
+  }
+
+  /* Optimized sand particle animation for better performance */
+  @keyframes sandFlow {
+    0% {
+      transform: translateX(-100%) translateY(-50%) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateX(100vw) translateY(50%) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .sand-particle {
+    animation: sandFlow 4s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  /* Added smooth transitions for all interactive elements */
+  button,
+  a,
+  .card {
+    transition: all 0.3s ease;
+  }
+
+  /* Enhanced focus styles for accessibility */
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  /* Added Egyptian arch pattern for character portraits */
+  .egyptian-arch {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .egyptian-arch::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at top,
+        transparent 60%,
+        rgba(212, 175, 55, 0.3) 70%,
+        rgba(212, 175, 55, 0.6) 80%
+      ),
+      linear-gradient(45deg, transparent 48%, rgba(212, 175, 55, 0.4) 49%, rgba(212, 175, 55, 0.4) 51%, transparent 52%),
+      linear-gradient(
+        -45deg,
+        transparent 48%,
+        rgba(212, 175, 55, 0.4) 49%,
+        rgba(212, 175, 55, 0.4) 51%,
+        transparent 52%
+      );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .egyptian-arch::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px solid rgba(212, 175, 55, 0.6);
+    border-radius: 50% 50% 0 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+}

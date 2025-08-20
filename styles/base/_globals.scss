@@ -1,0 +1,275 @@
+@import 'variables';
+
+// Сброс стилей
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: map-get($font-families, sans);
+  font-size: map-get($font-sizes, base);
+  color: color(neutral, 900);
+  background-color: color(neutral, 50);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+// Базовые элементы
+h1 {
+  font-size: map-get($font-sizes, 4xl);
+  font-weight: map-get($font-weights, bold);
+  line-height: map-get($line-heights, tight);
+  
+  @include respond-to(md) {
+    font-size: map-get($font-sizes, 5xl);
+  }
+  
+  @include respond-to(lg) {
+    font-size: map-get($font-sizes, 6xl);
+  }
+}
+
+h2 {
+  font-size: map-get($font-sizes, 3xl);
+  font-weight: map-get($font-weights, semibold);
+  line-height: map-get($line-heights, tight);
+  
+  @include respond-to(md) {
+    font-size: map-get($font-sizes, 4xl);
+  }
+}
+
+h3 {
+  font-size: map-get($font-sizes, 2xl);
+  font-weight: map-get($font-weights, semibold);
+  line-height: map-get($line-heights, snug);
+}
+
+h4 {
+  font-size: map-get($font-sizes, xl);
+  font-weight: map-get($font-weights, medium);
+  line-height: map-get($line-heights, snug);
+}
+
+h5 {
+  font-size: map-get($font-sizes, lg);
+  font-weight: map-get($font-weights, medium);
+  line-height: map-get($line-heights, normal);
+}
+
+h6 {
+  font-size: map-get($font-sizes, base);
+  font-weight: map-get($font-weights, medium);
+  line-height: map-get($line-heights, normal);
+}
+
+p {
+  margin-bottom: spacing(md);
+  line-height: map-get($line-heights, relaxed);
+}
+
+// Ссылки
+a {
+  color: color(primary, 600);
+  transition: color map-get($transitions, fast) map-get($easing, in-out);
+  
+  &:hover {
+    color: color(primary, 700);
+  }
+  
+  &:focus {
+    outline: 2px solid color(primary, 500);
+    outline-offset: 2px;
+  }
+}
+
+// Кнопки
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  
+  &:focus {
+    outline: 2px solid color(primary, 500);
+    outline-offset: 2px;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// Формы
+input,
+textarea,
+select {
+  border: 1px solid color(neutral, 300);
+  border-radius: map-get($border-radius, md);
+  padding: spacing(sm) spacing(md);
+  background-color: white;
+  transition: border-color map-get($transitions, fast) map-get($easing, in-out);
+  
+  &:focus {
+    outline: none;
+    border-color: color(primary, 500);
+    box-shadow: 0 0 0 3px color(primary, 100);
+  }
+  
+  &:disabled {
+    background-color: color(neutral, 100);
+    cursor: not-allowed;
+  }
+}
+
+// Утилиты для фокуса
+.focus-visible {
+  outline: 2px solid color(primary, 500);
+  outline-offset: 2px;
+}
+
+// Утилиты для скрытия
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Утилиты для анимаций
+.fade-in {
+  animation: fadeIn map-get($transitions, normal) map-get($easing, out);
+}
+
+.slide-up {
+  animation: slideUp map-get($transitions, normal) map-get($easing, out);
+}
+
+.slide-down {
+  animation: slideDown map-get($transitions, normal) map-get($easing, out);
+}
+
+// Ключевые кадры анимаций
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Утилиты для скроллбара
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: color(neutral, 100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: color(neutral, 400);
+  border-radius: map-get($border-radius, full);
+  
+  &:hover {
+    background: color(neutral, 500);
+  }
+}
+
+// Утилиты для выделения текста
+::selection {
+  background-color: color(primary, 200);
+  color: color(neutral, 900);
+}
+
+::-moz-selection {
+  background-color: color(primary, 200);
+  color: color(neutral, 900);
+} 
