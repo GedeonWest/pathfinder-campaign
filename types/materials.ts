@@ -1,8 +1,7 @@
 export interface Material {
   id: string
   name: string
-  type: 'map' | 'scroll' | 'artifact' | 'note' | 'image'
-  rarity: 'common' | 'uncommon' | 'rare' | 'legendary'
+  type: 'armor' | 'weapon' | 'clothing' | 'tool' | 'map' | 'scroll' | 'note' | 'image' | 'misc'
   description: string
   imageUrl?: string
   location?: string
@@ -24,7 +23,6 @@ export interface MaterialCategory {
 export interface MaterialFilter {
   searchQuery: string
   selectedType: string
-  selectedRarity: string
   selectedLocation?: string
   selectedSession?: string
   showCollectedOnly?: boolean

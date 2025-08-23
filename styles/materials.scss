@@ -19,25 +19,6 @@
     }
   }
 
-  // Стили для бейджей редкости
-  .rarity-badge {
-    &.common {
-      @apply bg-muted text-muted-foreground;
-    }
-
-    &.uncommon {
-      @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
-    }
-
-    &.rare {
-      @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200;
-    }
-
-    &.legendary {
-      @apply bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200;
-    }
-  }
-
   // Стили для поиска и фильтров
   .search-container {
     backdrop-filter: blur(8px);
@@ -110,11 +91,15 @@
 
 // Стили для иконок типов материалов
 .material-type-icon {
+  &.armor { @apply text-primary; }
+  &.weapon { @apply text-primary; }
+  &.clothing { @apply text-primary; }
+  &.tool { @apply text-primary; }
   &.map { @apply text-primary; }
   &.scroll { @apply text-primary; }
-  &.artifact { @apply text-primary; }
   &.note { @apply text-primary; }
   &.image { @apply text-primary; }
+  &.misc { @apply text-primary; }
 }
 
 // Стили для тегов

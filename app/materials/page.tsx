@@ -10,38 +10,32 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { SearchIcon, MapIcon, ScrollIcon, GemIcon, EyeIcon, FilterIcon, SortIcon } from "@/components/ui/icon"
+import { SearchIcon, MapIcon, ScrollIcon, GemIcon, EyeIcon, FilterIcon, SortIcon, ShieldIcon, SwordIcon, ShirtIcon, WrenchIcon } from "@/components/ui/icon"
 import { getMaterials, filterMaterials, getUniqueLocations, getUniqueSessions, getCollectionStats, sortMaterials } from "@/lib/materials"
 import type { Material, MaterialFilter } from "@/types/materials"
 
-const rarityColors = {
-  common: 'bg-muted text-muted-foreground',
-  uncommon: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-  rare: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-  legendary: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
-}
-
-const rarityLabels = {
-  common: 'Обычный',
-  uncommon: 'Необычный',
-  rare: 'Редкий',
-  legendary: 'Легендарный'
-}
-
 const typeIcons = {
+  armor: ShieldIcon,
+  weapon: SwordIcon,
+  clothing: ShirtIcon,
+  tool: WrenchIcon,
   map: MapIcon,
   scroll: ScrollIcon,
-  artifact: GemIcon,
   note: ScrollIcon,
-  image: EyeIcon
+  image: EyeIcon,
+  misc: GemIcon
 }
 
 const typeLabels = {
-  map: 'Карта',
-  scroll: 'Свиток',
-  artifact: 'Артефакт',
-  note: 'Записка',
-  image: 'Изображение'
+  armor: 'Доспехи',
+  weapon: 'Оружие',
+  clothing: 'Одежда',
+  tool: 'Инструменты',
+  map: 'Карты',
+  scroll: 'Свитки',
+  note: 'Записки',
+  image: 'Изображения',
+  misc: 'Разное'
 }
 
 export default function MaterialsPage() {
@@ -50,12 +44,11 @@ export default function MaterialsPage() {
   const [filters, setFilters] = useState<MaterialFilter>({
     searchQuery: '',
     selectedType: 'all',
-    selectedRarity: 'all',
     selectedLocation: 'all',
     selectedSession: 'all',
     showCollectedOnly: false
   })
-  const [sortBy, setSortBy] = useState<'name' | 'date' | 'rarity' | 'type'>('name')
+  const [sortBy, setSortBy] = useState<'name' | 'date' | 'type'>('name')
   const [selectedMaterial, setSelectedMaterial] = useState<Material | null>(null)
   const [locations, setLocations] = useState<string[]>([])
   const [sessions, setSessions] = useState<string[]>([])
@@ -84,7 +77,6 @@ export default function MaterialsPage() {
     setFilters({
       searchQuery: '',
       selectedType: 'all',
-      selectedRarity: 'all',
       selectedLocation: 'all',
       selectedSession: 'all',
       showCollectedOnly: false
@@ -150,7 +142,7 @@ export default function MaterialsPage() {
                 </div>
 
                 {/* Основные фильтры */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
                       Тип
@@ -161,29 +153,15 @@ export default function MaterialsPage() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="all">Все</SelectItem>
+                        <SelectItem value="armor">Доспехи</SelectItem>
+                        <SelectItem value="weapon">Оружие</SelectItem>
+                        <SelectItem value="clothing">Одежда</SelectItem>
+                        <SelectItem value="tool">Инструменты</SelectItem>
                         <SelectItem value="map">Карты</SelectItem>
                         <SelectItem value="scroll">Свитки</SelectItem>
-                        <SelectItem value="artifact">Артефакты</SelectItem>
                         <SelectItem value="note">Записки</SelectItem>
                         <SelectItem value="image">Изображения</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Редкость
-                    </label>
-                    <Select value={filters.selectedRarity} onValueChange={(value) => handleFilterChange('selectedRarity', value)}>
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">Все</SelectItem>
-                        <SelectItem value="common">Обычные</SelectItem>
-                        <SelectItem value="uncommon">Необычные</SelectItem>
-                        <SelectItem value="rare">Редкие</SelectItem>
-                        <SelectItem value="legendary">Легендарные</SelectItem>
+                        <SelectItem value="misc">Разное</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -226,14 +204,13 @@ export default function MaterialsPage() {
                     <label className="text-sm font-medium text-foreground mb-2 block">
                       Сортировка
                     </label>
-                    <Select value={sortBy} onValueChange={(value: 'name' | 'date' | 'rarity' | 'type') => setSortBy(value)}>
+                    <Select value={sortBy} onValueChange={(value: 'name' | 'date' | 'type') => setSortBy(value)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="name">По названию</SelectItem>
                         <SelectItem value="date">По дате</SelectItem>
-                        <SelectItem value="rarity">По редкости</SelectItem>
                         <SelectItem value="type">По типу</SelectItem>
                       </SelectContent>
                     </Select>
@@ -294,8 +271,8 @@ export default function MaterialsPage() {
                         </CardTitle>
                       </div>
                       <div className="flex flex-col gap-2 items-end">
-                        <Badge className={rarityColors[material.rarity]}>
-                          {rarityLabels[material.rarity]}
+                        <Badge variant="outline" className="text-xs">
+                          {typeLabels[material.type]}
                         </Badge>
                         {material.isCollected && (
                           <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 text-xs">
@@ -381,9 +358,6 @@ export default function MaterialsPage() {
                         {selectedMaterial.name}
                       </DialogTitle>
                       <div className="flex items-center gap-2 mt-2">
-                        <Badge className={rarityColors[selectedMaterial.rarity]}>
-                          {rarityLabels[selectedMaterial.rarity]}
-                        </Badge>
                         <Badge variant="outline">
                           {typeLabels[selectedMaterial.type]}
                         </Badge>

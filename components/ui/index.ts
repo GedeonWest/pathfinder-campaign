@@ -11,7 +11,7 @@ export { Stack } from "./stack"
 export { Typography, typographyVariants } from "./typography"
 
 // Icon components
-export { Icon, PyramidIcon, AnkhIcon, MenuIcon, CloseIcon, ChevronRightIcon, ChevronDownIcon, SearchIcon, MapIcon, ScrollIcon, GemIcon, EyeIcon, FilterIcon, SortIcon } from "./icon"
+export { Icon, PyramidIcon, AnkhIcon, MenuIcon, CloseIcon, ChevronRightIcon, ChevronDownIcon, SearchIcon, MapIcon, ScrollIcon, GemIcon, EyeIcon, FilterIcon, SortIcon, ShieldIcon, SwordIcon, ShirtIcon, WrenchIcon } from "./icon"
 
 // Interactive components
 export { Button, buttonVariants } from "./button"

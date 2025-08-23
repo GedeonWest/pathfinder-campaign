@@ -216,4 +216,61 @@ export const SortIcon = forwardRef<SVGSVGElement, IconProps>(
   )
 )
 
+// Иконки для новых типов материалов
+export const ShieldIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ className, ...props }, ref) => (
+    <Icon
+      ref={ref}
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
+    </Icon>
+  )
+)
+
+export const SwordIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ className, ...props }, ref) => (
+    <Icon
+      ref={ref}
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M6.92 5H5.14c-.27 0-.53.11-.72.31L2 8.27V9h1.73L4.5 7.5l1.42 1.42L6.92 5zM20.71 4.63l-1.34-1.34c-.2-.2-.51-.2-.71 0L9 12.25 11.75 15l8.96-8.96c.2-.2.2-.52 0-.72zM6.92 15.5l-1.42-1.42L4.5 15.5l1.42 1.42L6.92 15.5z" />
+    </Icon>
+  )
+)
+
+export const ShirtIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ className, ...props }, ref) => (
+    <Icon
+      ref={ref}
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M16 21H8A1 1 0 0 1 7 20V12.07L5.7 13.12C5.31 13.5 4.68 13.5 4.29 13.12L1.46 10.29C1.07 9.9 1.07 9.27 1.46 8.88L7.34 3H9C9 4.1 10.34 5 12 5S15 4.1 15 3H16.66L22.54 8.88C22.93 9.27 22.93 9.9 22.54 10.29L19.71 13.12C19.32 13.5 18.69 13.5 18.3 13.12L17 12.07V20A1 1 0 0 1 16 21M20.42 9.58L16.11 5.28C15.8 5.63 15.43 5.96 15 6.25C14.16 6.9 13.13 7.25 12 7.25S9.84 6.9 9 6.25C8.57 5.96 8.2 5.63 7.89 5.28L3.58 9.58L5 11L8 8V10H10V8L13 11L14.42 9.58L20.42 9.58Z" />
+    </Icon>
+  )
+)
+
+export const WrenchIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ className, ...props }, ref) => (
+    <Icon
+      ref={ref}
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
+    </Icon>
+  )
+)
+
 export { Icon }

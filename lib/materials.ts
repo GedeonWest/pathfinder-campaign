@@ -20,9 +20,6 @@ export function filterMaterials(materials: Material[], filters: MaterialFilter):
     // Фильтр по типу
     const matchesType = filters.selectedType === 'all' || material.type === filters.selectedType
 
-    // Фильтр по редкости
-    const matchesRarity = filters.selectedRarity === 'all' || material.rarity === filters.selectedRarity
-
     // Фильтр по локации
     const matchesLocation = !filters.selectedLocation || filters.selectedLocation === 'all' ||
       material.location === filters.selectedLocation
@@ -34,7 +31,7 @@ export function filterMaterials(materials: Material[], filters: MaterialFilter):
     // Фильтр по статусу сбора
     const matchesCollection = !filters.showCollectedOnly || material.isCollected
 
-    return matchesSearch && matchesType && matchesRarity && matchesLocation && matchesSession && matchesCollection
+    return matchesSearch && matchesType && matchesLocation && matchesSession && matchesCollection
   })
 }
 
@@ -56,33 +53,20 @@ export function getUniqueSessions(materials: Material[]): string[] {
 
 export function getMaterialsByType(materials: Material[]): Record<string, Material[]> {
   const grouped: Record<string, Material[]> = {
+    armor: [],
+    weapon: [],
+    clothing: [],
+    tool: [],
     map: [],
     scroll: [],
-    artifact: [],
     note: [],
-    image: []
+    image: [],
+    misc: []
   }
 
   materials.forEach(material => {
     if (grouped[material.type]) {
       grouped[material.type].push(material)
-    }
-  })
-
-  return grouped
-}
-
-export function getMaterialsByRarity(materials: Material[]): Record<string, Material[]> {
-  const grouped: Record<string, Material[]> = {
-    common: [],
-    uncommon: [],
-    rare: [],
-    legendary: []
-  }
-
-  materials.forEach(material => {
-    if (grouped[material.rarity]) {
-      grouped[material.rarity].push(material)
     }
   })
 
@@ -106,7 +90,7 @@ export function getMaterialsByCharacter(materials: Material[], characterName: st
   return materials.filter(material => material.collectedBy === characterName)
 }
 
-export function sortMaterials(materials: Material[], sortBy: 'name' | 'date' | 'rarity' | 'type'): Material[] {
+export function sortMaterials(materials: Material[], sortBy: 'name' | 'date' | 'type'): Material[] {
   const sorted = [...materials]
 
   switch (sortBy) {
@@ -119,9 +103,6 @@ export function sortMaterials(materials: Material[], sortBy: 'name' | 'date' | '
         if (!b.dateFound) return -1
         return new Date(a.dateFound).getTime() - new Date(b.dateFound).getTime()
       })
-    case 'rarity':
-      const rarityOrder = { common: 1, uncommon: 2, rare: 3, legendary: 4 }
-      return sorted.sort((a, b) => rarityOrder[a.rarity] - rarityOrder[b.rarity])
     case 'type':
       return sorted.sort((a, b) => a.type.localeCompare(b.type))
     default:
