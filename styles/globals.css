@@ -2,6 +2,7 @@
 @import 'tw-animate-css';
 @import './hierojax.scss';
 @import './matrix-effects.scss';
+@import './materials.scss';
 
 @tailwind base;
 @tailwind components;

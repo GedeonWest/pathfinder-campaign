@@ -39,6 +39,9 @@ export default function Header() {
               <Link href="/adventure-log" variant="default">
                 Журнал
               </Link>
+              <Link href="/materials" variant="default">
+                Материалы
+              </Link>
             </Flex>
           </nav>
 
@@ -89,6 +92,14 @@ export default function Header() {
                   className="px-2 py-1"
                 >
                   Журнал
+                </Link>
+                <Link
+                  href="/materials"
+                  variant="default"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="px-2 py-1"
+                >
+                  Материалы
                 </Link>
               </Stack>
             </nav>
