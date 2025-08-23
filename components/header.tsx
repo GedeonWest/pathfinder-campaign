@@ -28,16 +28,16 @@ export default function Header() {
           <nav className="hidden md:flex">
             <Flex gap="xl">
               <Link href="/" variant="default">
-                Home
+                Главная
               </Link>
               <Link href="/characters" variant="default">
-                Characters
+                Персонажи
               </Link>
               <Link href="/statistics" variant="default">
-                Statistics
+                Статистика
               </Link>
               <Link href="/adventure-log" variant="default">
-                Adventure Log
+                Журнал
               </Link>
             </Flex>
           </nav>
@@ -64,7 +64,7 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                   className="px-2 py-1"
                 >
-                  Home
+                  Главная
                 </Link>
                 <Link
                   href="/characters"
@@ -72,7 +72,7 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                   className="px-2 py-1"
                 >
-                  Characters
+                  Персонажи
                 </Link>
                 <Link
                   href="/statistics"
@@ -80,7 +80,7 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                   className="px-2 py-1"
                 >
-                  Statistics
+                  Статистика
                 </Link>
                 <Link
                   href="/adventure-log"
@@ -88,7 +88,7 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                   className="px-2 py-1"
                 >
-                  Adventure Log
+                  Журнал
                 </Link>
               </Stack>
             </nav>

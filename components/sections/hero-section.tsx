@@ -42,10 +42,10 @@ export function HeroSection({ onExploreClick }: HeroSectionProps) {
               Маски Мумии
             </Typography>
             <Typography variant="h2" as="h2" size="2xl">
-              Campaign
+              Кампания
             </Typography>
             <Typography variant="bodyLarge" as="p">
-              Pathfinder Adventure
+              Приключение Pathfinder
             </Typography>
           </Stack>
 
@@ -56,7 +56,7 @@ export function HeroSection({ onExploreClick }: HeroSectionProps) {
             onClick={onExploreClick}
           >
             <PyramidIcon size="md" className="mr-2" />
-            Explore the Campaign
+            Исследовать кампанию
           </Button>
         </Stack>
       </Container>

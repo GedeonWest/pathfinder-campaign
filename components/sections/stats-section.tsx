@@ -6,10 +6,10 @@ import { Grid } from "@/components/ui/grid"
 import { StatCard } from "@/components/ui/stat-card"
 
 const stats = [
-  { value: "15", label: "Sessions Played" },
-  { value: "7", label: "Tombs Explored" },
-  { value: "23", label: "Enemies Defeated" },
-  { value: "5,420", label: "Gold Earned" },
+  { value: "15", label: "Сыгранных сессий" },
+  { value: "7", label: "Исследованных гробниц" },
+  { value: "23", label: "Побежденных врагов" },
+  { value: "5,420", label: "Заработано золота" },
 ]
 
 export function StatsSection() {

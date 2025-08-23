@@ -1,7 +1,7 @@
 # UI Components Documentation
 
 ## Overview
-This document describes the reusable UI components created for the Pathfinder Campaign project. All components follow BEM methodology, use TypeScript for type safety, and are built with mobile-first responsive design.
+Этот документ описывает переиспользуемые UI компоненты, созданные для проекта Pathfinder Campaign. Все компоненты следуют методологии БЭМ, используют TypeScript для безопасности типов и построены с мобильным подходом к адаптивному дизайну.
 
 ## Layout Components
 
@@ -227,8 +227,8 @@ import { StatCard } from "@/components/ui/stat-card"
 
 <StatCard
   value="15"
-  label="Sessions Played"
-  description="Total campaign sessions"
+  label="Сыгранных сессий"
+  description="Всего сессий кампании"
   icon={<PyramidIcon />}
   variant="primary"
 />
@@ -249,9 +249,9 @@ import { HeroCard } from "@/components/ui/hero-card"
 
 <HeroCard
   name="Meldreth"
-  class="Fighter"
+  class="Боец"
   level={5}
-  description="Desert Warrior"
+  description="Пустынный воин"
   icon="⚔️"
   iconBgColor="from-red-500 to-red-700"
   onClick={() => console.log('Hero clicked')}

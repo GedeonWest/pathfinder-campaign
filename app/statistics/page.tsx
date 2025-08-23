@@ -66,21 +66,21 @@ function ObeliskIcon({ className }: { className?: string }) {
 
 // Campaign statistics data
 const campaignStats = [
-  { session: 1, location: "Wati Necropolis", outcome: "Victory - Found the Silver Scarab" },
-  { session: 2, location: "Tomb of Akhentepi", outcome: "Victory - Defeated Mummy Guardian" },
-  { session: 3, location: "House of Pentheru", outcome: "Victory - Uncovered Ancient Scrolls" },
-  { session: 4, location: "Sanctum of the Erudite Eye", outcome: "Victory - Solved the Riddle of Thoth" },
-  { session: 5, location: "The Slave Trenches", outcome: "Victory - Rescued Trapped Miners" },
-  { session: 6, location: "Tomb of the Forgotten Pharaoh", outcome: "Partial - Retreated from Lich" },
-  { session: 7, location: "The Sunless Stockade", outcome: "Victory - Freed Political Prisoners" },
-  { session: 8, location: "Pyramid of Kheti III", outcome: "Victory - Claimed the Golden Mask" },
-  { session: 9, location: "The Shifting Sands", outcome: "Victory - Survived Sandstorm Ambush" },
-  { session: 10, location: "Temple of the Four Pharaohs", outcome: "Victory - Awakened Ancient Guardian" },
-  { session: 11, location: "The Necropolis Gates", outcome: "Victory - Defended Against Undead Horde" },
-  { session: 12, location: "Tomb of the Asp", outcome: "Victory - Defeated Serpentine Cult" },
-  { session: 13, location: "The Whispering Sands", outcome: "Victory - Broke Ancient Curse" },
-  { session: 14, location: "Chamber of Renewal", outcome: "Victory - Restored Sacred Waters" },
-  { session: 15, location: "The Sunken Pyramid", outcome: "Ongoing - Facing Sobek-Ra" },
+  { session: 1, location: "Некрополь Вати", outcome: "Победа - Найден Серебряный Скарабей" },
+  { session: 2, location: "Гробница Ахентепи", outcome: "Победа - Побежден Страж-мумия" },
+  { session: 3, location: "Дом Пентеру", outcome: "Победа - Обнаружены Древние Свитки" },
+  { session: 4, location: "Святилище Ученого Глаза", outcome: "Победа - Разгадана Загадка Тота" },
+  { session: 5, location: "Рабские Траншеи", outcome: "Победа - Спасены Запертые Шахтеры" },
+  { session: 6, location: "Гробница Забытого Фараона", outcome: "Частично - Отступили от Лича" },
+  { session: 7, location: "Безсолнечная Крепость", outcome: "Победа - Освобождены Политические Заключенные" },
+  { session: 8, location: "Пирамида Хети III", outcome: "Победа - Захвачена Золотая Маска" },
+  { session: 9, location: "Сдвигающиеся Пески", outcome: "Победа - Пережили Песчаную Засаду" },
+  { session: 10, location: "Храм Четырех Фараонов", outcome: "Победа - Пробужден Древний Страж" },
+  { session: 11, location: "Ворота Некрополя", outcome: "Победа - Защитились от Орды Нежити" },
+  { session: 12, location: "Гробница Аспида", outcome: "Победа - Побежден Змеиный Культ" },
+  { session: 13, location: "Шепчущие Пески", outcome: "Победа - Разрушено Древнее Проклятие" },
+  { session: 14, location: "Камера Обновления", outcome: "Победа - Восстановлены Священные Воды" },
+  { session: 15, location: "Затонувшая Пирамида", outcome: "В процессе - Сражаемся с Собек-Ра" },
 ]
 
 export default function StatisticsPage() {
@@ -99,9 +99,9 @@ export default function StatisticsPage() {
           <div className="mb-8">
             <ScarabIcon className="w-20 h-20 mx-auto text-primary mb-6" />
           </div>
-          <h1 className="font-serif text-4xl md:text-6xl font-bold text-primary mb-4 tracking-wide">Campaign Stats</h1>
+          <h1 className="font-serif text-4xl md:text-6xl font-bold text-primary mb-4 tracking-wide">Статистика кампании</h1>
           <p className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto font-sans">
-            Chronicles of our journey through the ancient lands of Osirion
+            Хроники нашего путешествия по древним землям Осириона
           </p>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function StatisticsPage() {
               <CardContent className="p-6">
                 <PyramidIcon className="w-8 h-8 mx-auto text-primary mb-3" />
                 <div className="text-3xl font-bold text-primary mb-2">15</div>
-                <div className="text-sm text-foreground/80 font-sans">Sessions Played</div>
+                <div className="text-sm text-foreground/80 font-sans">Сыгранных сессий</div>
               </CardContent>
             </Card>
 
@@ -122,7 +122,7 @@ export default function StatisticsPage() {
               <CardContent className="p-6">
                 <ScarabIcon className="w-8 h-8 mx-auto text-primary mb-3" />
                 <div className="text-3xl font-bold text-primary mb-2">47</div>
-                <div className="text-sm text-foreground/80 font-sans">Enemies Defeated</div>
+                <div className="text-sm text-foreground/80 font-sans">Побежденных врагов</div>
               </CardContent>
             </Card>
 
@@ -130,7 +130,7 @@ export default function StatisticsPage() {
               <CardContent className="p-6">
                 <div className="text-primary text-2xl mb-3">💎</div>
                 <div className="text-3xl font-bold text-primary mb-2">12</div>
-                <div className="text-sm text-foreground/80 font-sans">Treasures Found</div>
+                <div className="text-sm text-foreground/80 font-sans">Найденных сокровищ</div>
               </CardContent>
             </Card>
 
@@ -138,7 +138,7 @@ export default function StatisticsPage() {
               <CardContent className="p-6">
                 <div className="text-primary text-2xl mb-3">🏺</div>
                 <div className="text-3xl font-bold text-primary mb-2">8</div>
-                <div className="text-sm text-foreground/80 font-sans">Tombs Explored</div>
+                <div className="text-sm text-foreground/80 font-sans">Исследованных гробниц</div>
               </CardContent>
             </Card>
           </div>
@@ -149,7 +149,7 @@ export default function StatisticsPage() {
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-8 text-center">
-            Session Chronicles
+            Хроники сессий
           </h2>
 
           <Card className="bg-card/95 backdrop-blur-sm border-primary/30 shadow-2xl overflow-hidden">
@@ -166,9 +166,9 @@ export default function StatisticsPage() {
                   <table className="w-full">
                     <thead className="bg-primary/10 border-b-2 border-primary/30">
                       <tr>
-                        <th className="px-6 py-4 text-left font-serif font-bold text-primary text-base">Session</th>
-                        <th className="px-6 py-4 text-left font-serif font-bold text-primary text-base">Location</th>
-                        <th className="px-6 py-4 text-left font-serif font-bold text-primary text-base">Outcome</th>
+                        <th className="px-6 py-4 text-left font-serif font-bold text-primary text-base">Сессия</th>
+                        <th className="px-6 py-4 text-left font-serif font-bold text-primary text-base">Местоположение</th>
+                        <th className="px-6 py-4 text-left font-serif font-bold text-primary text-base">Результат</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -184,9 +184,9 @@ export default function StatisticsPage() {
                           <td className="px-6 py-4 font-sans text-foreground/90 text-sm">
                             <span
                               className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-                                stat.outcome.startsWith("Victory")
+                                stat.outcome.startsWith("Победа")
                                   ? "bg-green-500/20 text-green-300"
-                                  : stat.outcome.startsWith("Partial")
+                                  : stat.outcome.startsWith("Частично")
                                     ? "bg-yellow-500/20 text-yellow-300"
                                     : "bg-blue-500/20 text-blue-300"
                               }`}

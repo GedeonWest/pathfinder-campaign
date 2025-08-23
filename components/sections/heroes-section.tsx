@@ -11,25 +11,25 @@ import { AnkhIcon } from "@/components/ui/icon"
 const heroes = [
   {
     name: "Meldreth",
-    class: "Fighter",
+    class: "Боец",
     level: 5,
-    description: "Desert Warrior",
+    description: "Пустынный воин",
     icon: "⚔️",
     iconBgColor: "from-red-500 to-red-700",
   },
   {
     name: "Khenti-Ka",
-    class: "Cleric",
+    class: "Жрец",
     level: 5,
-    description: "Priest of Ra",
+    description: "Жрец Ра",
     icon: "✨",
     iconBgColor: "from-blue-500 to-blue-700",
   },
   {
     name: "Nefertiti",
-    class: "Rogue",
+    class: "Плут",
     level: 4,
-    description: "Tomb Raider",
+    description: "Расхититель гробниц",
     icon: "🗡️",
     iconBgColor: "from-purple-500 to-purple-700",
   },
@@ -39,7 +39,7 @@ export function HeroesSection() {
   return (
     <Container maxWidth="6xl">
       <Typography variant="h3" as="h3" align="center" className="mb-8">
-        The Heroes
+        Герои
       </Typography>
 
       <Grid cols={1} colsMd={2} colsLg={3} gap="md" className="mb-8">
@@ -54,7 +54,7 @@ export function HeroesSection() {
       <div className="text-center">
         <Button variant="outline" className="border-primary/40 text-primary hover:bg-primary/10 bg-transparent">
           <Link href="/characters" className="flex items-center">
-            View All Characters
+            Посмотреть всех персонажей
             <AnkhIcon size="sm" className="ml-2" />
           </Link>
         </Button>

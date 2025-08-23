@@ -102,58 +102,58 @@ export default function AdventureLogPage() {
   const timelineEntries = [
     {
       id: 1,
-      date: "3 days ago",
-      title: "Session 15: The Sunken Pyramid",
+      date: "3 дня назад",
+      title: "Сессия 15: Затонувшая пирамида",
       description:
-        "Our heroes descended into the flooded chambers beneath the Pyramid of Kheti III, where they encountered the ancient guardian Sobek-Ra. After a fierce battle with crocodilian undead, they discovered the Chamber of Golden Masks, but not without triggering a deadly trap that nearly claimed Meldreth's life.",
+        "Наши герои спустились в затопленные камеры под Пирамидой Хети III, где они встретили древнего стража Собека-Ра. После ожесточенной битвы с крокодильими нежитью они обнаружили Камеру Золотых Масок, но не без того, чтобы не сработала смертельная ловушка, которая чуть не забрала жизнь Мелдрета.",
       icon: <MummyHandIcon className="w-6 h-6" />,
     },
     {
       id: 2,
-      date: "1 week ago",
-      title: "Session 14: The Whispering Sands",
+      date: "1 неделю назад",
+      title: "Сессия 14: Шепчущие пески",
       description:
-        "The party ventured into the Desert of Forgotten Names, following ancient star charts to locate the entrance to Kheti III's tomb. They battled sand elementals and solved the riddle of the Sphinx's Gate, earning passage to the pyramid's hidden entrance.",
+        "Группа отправилась в Пустыню Забытых Имен, следуя древним звездным картам, чтобы найти вход в гробницу Хети III. Они сражались с песчаными элементалями и разгадали загадку Врат Сфинкса, получив проход к скрытому входу в пирамиду.",
       icon: <PapyrusIcon className="w-6 h-6" />,
     },
     {
       id: 3,
-      date: "2 weeks ago",
-      title: "Session 13: Secrets of the Ruby Prince",
+      date: "2 недели назад",
+      title: "Сессия 13: Тайны Рубинового Принца",
       description:
-        "In the grand library of Wati, the heroes uncovered disturbing evidence that the Ruby Prince may not be who he claims to be. Ancient texts speak of a curse that binds the royal bloodline to the undead pharaohs of old.",
+        "В великой библиотеке Вати герои обнаружили тревожные доказательства того, что Рубиновый Принц может быть не тем, за кого себя выдает. Древние тексты говорят о проклятии, которое связывает королевскую кровь с неживыми фараонами прошлого.",
       icon: <ScarabIcon className="w-6 h-6" />,
     },
     {
       id: 4,
-      date: "3 weeks ago",
-      title: "Session 12: The Necropolis Awakens",
+      date: "3 недели назад",
+      title: "Сессия 12: Некрополь пробуждается",
       description:
-        "Strange tremors shook the city of Wati as the party delved deeper into the Necropolis. They discovered that their actions have begun to awaken something ancient and terrible that slumbers beneath the city.",
+        "Странные толчки потрясли город Вати, когда группа углубилась в Некрополь. Они обнаружили, что их действия начали пробуждать что-то древнее и ужасное, что дремлет под городом.",
       icon: <AnkhIcon className="w-6 h-6" />,
     },
     {
       id: 5,
-      date: "1 month ago",
-      title: "Session 11: The Cult of the Forgotten Pharaoh",
+      date: "1 месяц назад",
+      title: "Сессия 11: Культ забытого фараона",
       description:
-        "The heroes infiltrated a secret cult meeting in the abandoned quarter of Wati, learning of a plot to resurrect Ankh-ef-en-Sekhmet, the Pharaoh of Forgotten Names. They barely escaped with their lives and crucial intelligence.",
+        "Герои проникли на тайную встречу культа в заброшенном квартале Вати, узнав о заговоре воскресить Анх-эф-ен-Секхмет, Фараона Забытых Имен. Они едва сбежали с жизнью и важной информацией.",
       icon: <CandleIcon className="w-6 h-6" />,
     },
     {
       id: 6,
-      date: "1 month ago",
-      title: "Session 10: The Merchant's Gambit",
+      date: "1 месяц назад",
+      title: "Сессия 10: Гамбит торговца",
       description:
-        "A seemingly simple escort mission for a wealthy merchant turned deadly when the caravan was attacked by mummy-wrapped assassins. The party discovered the merchant was smuggling cursed artifacts from forbidden tombs.",
+        "Казалось бы, простая миссия сопровождения богатого торговца обернулась смертельно опасной, когда караван был атакован завернутыми в мумии убийцами. Группа обнаружила, что торговец контрабандой провозил проклятые артефакты из запрещенных гробниц.",
       icon: <PapyrusIcon className="w-6 h-6" />,
     },
     {
       id: 7,
-      date: "5 weeks ago",
-      title: "Session 9: The First Seal",
+      date: "5 недель назад",
+      title: "Сессия 9: Первая печать",
       description:
-        "Deep within the Tomb of Akhentepi, the heroes broke the first of seven seals that bind the ancient evil. As the seal shattered, they felt a malevolent presence stir in the depths below, and the very walls began to bleed sand.",
+        "Глубоко в Гробнице Ахентепи герои сломали первую из семи печатей, которые связывают древнее зло. Когда печать разбилась, они почувствовали, как зловещее присутствие пробуждается в глубинах внизу, и сами стены начали кровоточить песком.",
       icon: <MummyHandIcon className="w-6 h-6" />,
     },
   ]
@@ -173,10 +173,10 @@ export default function AdventureLogPage() {
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="font-serif text-4xl md:text-6xl font-bold text-primary mb-6 tracking-wide">
-            Chronicle of Маски Мумии
+            Хроника Маски Мумии
           </h1>
           <p className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto font-sans leading-relaxed">
-            The recorded adventures of brave souls who dare to disturb the eternal rest of ancient pharaohs
+            Записанные приключения храбрых душ, которые осмеливаются потревожить вечный покой древних фараонов
           </p>
         </div>
       </section>

@@ -48,7 +48,7 @@ const HeroCard = forwardRef<HTMLDivElement, HeroCardProps>(
             className="mb-1"
             as="p"
           >
-            {characterClass} • Level {level}
+            {characterClass} • Уровень {level}
           </Typography>
 
           <Typography

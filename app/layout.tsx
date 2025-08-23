@@ -12,8 +12,8 @@ const openSans = Open_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Маски Мумии Campaign - Pathfinder Adventure",
-  description: "Enter the ancient world of Egyptian mysteries in our Pathfinder Mummy's Mask campaign",
+  title: "Маски Мумии - Приключение Pathfinder",
+  description: "Войдите в древний мир египетских тайн в нашей кампании Pathfinder Маска мумии",
   generator: "v0.app",
 }
 

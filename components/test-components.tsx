@@ -17,35 +17,35 @@ export function TestComponents() {
     <Container maxWidth="4xl" padding="lg">
       <Stack spacing="xl" align="center">
         <Typography variant="h1" align="center">
-          Test Components
+          Тестовые компоненты
         </Typography>
 
         <Typography variant="body" align="center">
-          Testing all the new reusable components
+          Тестирование всех новых переиспользуемых компонентов
         </Typography>
 
         <Grid cols={1} colsMd={2} gap="lg">
           <Box padding="lg" background="card" border="primary" radius="lg">
             <Typography variant="h3" className="mb-4">
-              Box Component
+              Компонент Box
             </Typography>
             <Typography variant="body">
-              This is a test of the Box component with various props.
+              Это тест компонента Box с различными пропсами.
             </Typography>
           </Box>
 
           <Box padding="lg" background="muted" border="accent" radius="xl">
             <Typography variant="h3" className="mb-4">
-              Another Box
+              Другой Box
             </Typography>
             <Typography variant="body">
-              Different styling for comparison.
+              Различные стили для сравнения.
             </Typography>
           </Box>
         </Grid>
 
         <Flex direction="col" align="center" gap="md">
-          <Typography variant="h3">Buttons</Typography>
+          <Typography variant="h3">Кнопки</Typography>
           <Flex gap="md" wrap="wrap" justify="center">
             <Button variant="default">Default</Button>
             <Button variant="primary">Primary</Button>
@@ -56,34 +56,34 @@ export function TestComponents() {
         </Flex>
 
         <Grid cols={2} colsMd={4} gap="md">
-          <StatCard value="15" label="Sessions" />
-          <StatCard value="7" label="Tombs" />
-          <StatCard value="23" label="Enemies" />
-          <StatCard value="5,420" label="Gold" />
+          <StatCard value="15" label="Сессии" />
+          <StatCard value="7" label="Гробницы" />
+          <StatCard value="23" label="Враги" />
+          <StatCard value="5,420" label="Золото" />
         </Grid>
 
         <Grid cols={1} colsMd={3} gap="md">
           <HeroCard
             name="Meldreth"
-            class="Fighter"
+            class="Боец"
             level={5}
-            description="Desert Warrior"
+            description="Пустынный воин"
             icon="⚔️"
             iconBgColor="from-red-500 to-red-700"
           />
           <HeroCard
             name="Khenti-Ka"
-            class="Cleric"
+            class="Жрец"
             level={5}
-            description="Priest of Ra"
+            description="Жрец Ра"
             icon="✨"
             iconBgColor="from-blue-500 to-blue-700"
           />
           <HeroCard
             name="Nefertiti"
-            class="Rogue"
+            class="Плут"
             level={4}
-            description="Tomb Raider"
+            description="Расхититель гробниц"
             icon="🗡️"
             iconBgColor="from-purple-500 to-purple-700"
           />
@@ -91,13 +91,13 @@ export function TestComponents() {
 
         <Flex gap="md" wrap="wrap" justify="center">
           <Link href="/" variant="primary">
-            Home
+            Главная
           </Link>
           <Link href="/characters" variant="default">
-            Characters
+            Персонажи
           </Link>
           <Link href="/statistics" variant="accent">
-            Statistics
+            Статистика
           </Link>
         </Flex>
 

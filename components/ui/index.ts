@@ -21,6 +21,15 @@ export { Link } from "./link"
 export { StatCard } from "./stat-card"
 export { HeroCard } from "./hero-card"
 
+// Modal components
+export { Modal, ModalContent, ModalHeader, ModalBody } from "./modal"
+
+// Hieroglyphs components
+export { Hieroglyphs, RunningHieroglyphs } from "./hieroglyphs"
+
+// Re-export sections
+export * from "../sections"
+
 // Feedback components
 export { Badge, badgeVariants } from "./badge"
 
