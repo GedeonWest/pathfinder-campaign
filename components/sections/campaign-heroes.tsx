@@ -1,62 +1,87 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Crown } from "lucide-react"
+import Link from "next/link"
+import Masonry from "react-masonry-css"
+import { getAllCharacters } from "@/lib/characters"
+import { HeroesIcon } from "../ui/icons/heroes"
 
-// Ankh icon component
-function AnkhIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2C10.34 2 9 3.34 9 5s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 8c-1.1 0-2-.9-2-2V7c-2.21 0-4 1.79-4 4v11h12V11c0-2.21-1.79-4-4-4v1c0 1.1-.9 2-2 2z" />
-    </svg>
-  )
+const characters = getAllCharacters()
+
+// Breakpoints для masonry
+const breakpointColumns = {
+  default: 5,
+  1100: 4,
+  700: 3,
+  500: 3
 }
 
 export function CampaignHeroes() {
   return (
     <div>
-      <h3 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-8 text-center">Герои</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card className="bg-card/95 backdrop-blur-sm border-primary/30 hover:shadow-xl transition-all duration-300">
-          <CardContent className="p-6 text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-700 rounded-full mx-auto mb-4 flex items-center justify-center">
-              <span className="text-white text-2xl">⚔️</span>
-            </div>
-            <h4 className="font-serif text-lg font-bold text-primary mb-2">Meldreth</h4>
-            <p className="text-sm text-foreground/80 font-sans mb-1">Боец • Уровень 5</p>
-            <p className="text-xs text-foreground/60 font-sans">Пустынный воин</p>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-card/95 backdrop-blur-sm border-primary/30 hover:shadow-xl transition-all duration-300">
-          <CardContent className="p-6 text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full mx-auto mb-4 flex items-center justify-center">
-              <span className="text-white text-2xl">✨</span>
-            </div>
-            <h4 className="font-serif text-lg font-bold text-primary mb-2">Khenti-Ka</h4>
-            <p className="text-sm text-foreground/80 font-sans mb-1">Жрец • Уровень 5</p>
-            <p className="text-xs text-foreground/60 font-sans">Жрец Ра</p>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-card/95 backdrop-blur-sm border-primary/30 hover:shadow-xl transition-all duration-300">
-          <CardContent className="p-6 text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full mx-auto mb-4 flex items-center justify-center">
-              <span className="text-white text-2xl">🗡️</span>
-            </div>
-            <h4 className="font-serif text-lg font-bold text-primary mb-2">Nefertiti</h4>
-            <p className="text-sm text-foreground/80 font-sans mb-1">Плут • Уровень 4</p>
-            <p className="text-xs text-foreground/60 font-sans">Расхититель гробниц</p>
-          </CardContent>
-        </Card>
+      <div className="text-center mb-16">
+        <div className="flex justify-center mb-6">
+          <HeroesIcon classNames="w-16 h-16 text-primary animate-glow-pulse" />
+        </div>
+        <h3 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-4 tracking-wider">ГЕРОИ КАМПАНИИ</h3>
+        <div className="flex justify-center mb-6">
+          <div className="w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+        </div>
+        <p className="text-lg text-foreground/90 max-w-3xl mx-auto font-serif">
+          Отважные искатели приключений, исследующие древние тайны Осириона
+        </p>
       </div>
 
-      <div className="text-center mt-8">
-        <Button variant="outline" className="border-primary/40 text-primary hover:bg-primary/10 bg-transparent">
-          <a href="/characters" className="flex items-center">
+      <Masonry
+        breakpointCols={breakpointColumns}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {characters.map((character, index) => (
+          <Link
+            key={character.id}
+            href={`/characters/${character.id}`}
+            className="block mb-6 animate-fade-in-up group cursor-pointer"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <div className="text-center hover:scale-105 transition-transform duration-300">
+              {/* Изображение в арке */}
+              <div className="flex justify-center mb-3">
+                <div className="character-arch w-24 h-28 p-1">
+                  <img
+                    src={character.image || "/placeholder.svg"}
+                    alt={character.name}
+                    className="w-full h-full object-cover rounded-t-full"
+                  />
+                </div>
+              </div>
+
+              {/* Информация о персонаже */}
+              <div className="space-y-1">
+                <h4 className="font-serif text-lg font-bold text-primary group-hover:text-primary/80 transition-colors duration-300">
+                  {character.name}
+                </h4>
+
+                <div className="text-sm text-foreground/90">
+                  {character.class}
+                </div>
+
+                <div className="text-sm text-foreground/70">
+                  Уровень {character.level}
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </Masonry>
+
+      <div className="text-center mt-12">
+        <Button variant="outline" className="border-primary/40 text-primary hover:bg-primary/10 bg-transparent px-8 py-3">
+          <Link href="/characters" className="flex items-center">
             Посмотреть всех персонажей
-            <AnkhIcon className="w-4 h-4 ml-2" />
-          </a>
+            <HeroesIcon classNames="w-4 h-4 ml-2" />
+          </Link>
         </Button>
       </div>
     </div>
