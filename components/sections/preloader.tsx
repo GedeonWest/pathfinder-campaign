@@ -46,6 +46,88 @@ function SandParticles({ isRevealing }: { isRevealing: boolean }) {
   )
 }
 
+// Компонент быстрой смены иероглифов
+function HieroglyphCycler() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0)
+
+  // Готовые иероглифы для прелоадера
+  const PRELOADER_SYMBOLS = [
+    '𓌢', '𓂀', '𓇳', '𓇾', '𓈖', '𓈋', '𓉐', '𓀀', '𓁐', '𓀔',
+    '𓃭', '𓅓', '𓆛', '𓆏', '𓆣', '𓏏', '𓊪', '𓋴', '𓂻', '𓂋'
+  ]
+
+  // Рандомные египетские фразы
+  const EGYPTIAN_PHRASES = [
+    'Древние пески сдвигаются...',
+    'Приоткрываем тайну фараонов...',
+    'Пробуждаем дух пирамид...',
+    'Раскрываем секреты мумий...',
+    'Погружаемся в глубины Нила...',
+    'Разгадываем загадки сфинкса...',
+    'Входим в священные гробницы...',
+    'Читаем древние папирусы...',
+    'Следуем по следам жрецов...',
+    'Открываем врата вечности...',
+    'Пробуждаем древнюю магию...',
+    'Ищем сокровища Тутанхамона...',
+    'Расшифровываем иероглифы...',
+    'Погружаемся в мир Осириса...',
+    'Раскрываем тайны Изиды...'
+  ]
+
+  useEffect(() => {
+    // Интервал для смены иероглифов
+    const hieroglyphInterval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % PRELOADER_SYMBOLS.length)
+    }, 200) // Быстрая смена каждые 200мс
+
+    // Интервал для смены фраз (рандомно)
+    const phraseInterval = setInterval(() => {
+      setCurrentPhraseIndex(prev => {
+        // Генерируем рандомный индекс, отличный от текущего
+        let newIndex
+        do {
+          newIndex = Math.floor(Math.random() * EGYPTIAN_PHRASES.length)
+        } while (newIndex === prev && EGYPTIAN_PHRASES.length > 1)
+        return newIndex
+      })
+    }, 2500) // Смена фраз каждые 2.5 секунды
+
+    return () => {
+      clearInterval(hieroglyphInterval)
+      clearInterval(phraseInterval)
+    }
+  }, [])
+
+  return (
+    <div className="text-center text-amber-400/80 z-10 preloader-hieroglyphs">
+      {/* Только один иероглиф с быстрой сменой */}
+      <div
+        className="font-['Hieroglyphic'] text-6xl mb-4 animate-pulse"
+        style={{
+          textShadow: '0 0 20px rgba(251, 191, 36, 0.8), 0 0 40px rgba(251, 191, 36, 0.4)',
+          transition: 'all 0.2s ease-in-out'
+        }}
+      >
+        {PRELOADER_SYMBOLS[currentIndex]}
+      </div>
+
+      {/* Фраза с рандомной сменой */}
+      <p
+        key={currentPhraseIndex} // Для анимации смены фраз
+        className="text-sm font-mono transition-all duration-700"
+        style={{
+          textShadow: '0 0 10px rgba(251, 191, 36, 0.4)',
+          animation: 'phraseFadeInOut 2.5s ease-in-out infinite'
+        }}
+      >
+        {EGYPTIAN_PHRASES[currentPhraseIndex]}
+      </p>
+    </div>
+  )
+}
+
 interface PreloaderProps {
   onComplete: () => void
 }
@@ -81,10 +163,7 @@ export function Preloader({ onComplete }: PreloaderProps) {
       <div
         className={`absolute inset-0 flex items-center justify-center transition-opacity duration-1000 ${isRevealing ? "opacity-0" : "opacity-100"}`}
       >
-        <div className="text-center">
-          <div className="text-6xl mb-4 text-primary">⧫</div>
-          <div className="text-primary text-xl font-serif">Древние пески сдвигаются...</div>
-        </div>
+        <HieroglyphCycler />
       </div>
     </div>
   )

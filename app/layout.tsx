@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Open_Sans } from "next/font/google"
 import Header from "@/components/header"
+import { AdaptiveBackgroundMatrix } from "@/components/ui"
 import "./globals.css"
 
 const openSans = Open_Sans({
@@ -74,7 +75,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased relative">
+        {/* Фоновая матричная анимация */}
+        <AdaptiveBackgroundMatrix />
+
         <Header />
         <main className="pt-16">{children}</main>
       </body>

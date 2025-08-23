@@ -27,6 +27,77 @@
   }
 }
 
+// Фоновая матричная анимация
+.background-matrix {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+
+  // CSS переменная для primary цвета
+  --primary: oklch(85.2% 0.199 91.936);
+
+  // Фоновый градиент для фона
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(251, 191, 36, 0.01) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  // Падающие иероглифы на фоне
+  .falling-hieroglyph {
+    position: absolute;
+    font-family: 'Hieroglyphic', serif;
+    color: rgba(251, 191, 36, 0.4);
+    user-select: none;
+    pointer-events: none;
+    font-size: 1.25rem;
+    transition: opacity 0.3s ease-in-out, text-shadow 0.5s ease-in-out;
+
+    // Анимация появления для фоновых иероглифов
+    animation: backgroundFadeInOut 4s ease-in-out infinite;
+
+    // Разные задержки для разнообразия
+    &:nth-child(odd) {
+      animation-delay: 0s;
+    }
+
+    &:nth-child(even) {
+      animation-delay: 2s;
+    }
+
+    &:nth-child(3n) {
+      animation-delay: 4s;
+    }
+
+    // Специальные стили для светящихся иероглифов
+    &.glowing-primary {
+      color: var(--primary);
+      text-shadow:
+        0 0 12px var(--primary),
+        0 0 24px var(--primary),
+        0 0 36px var(--primary);
+      animation: primaryGlow 2s ease-in-out infinite;
+    }
+
+    &.glowing-amber {
+      color: rgb(251, 191, 36);
+      text-shadow:
+        0 0 12px rgba(251, 191, 36, 0.8),
+        0 0 24px rgba(251, 191, 36, 0.6),
+        0 0 36px rgba(251, 191, 36, 0.4);
+      animation: amberGlow 2s ease-in-out infinite;
+    }
+  }
+}
+
 // SVG иероглифы в матрице
 .matrix-hieroglyphs svg {
   display: block;
@@ -111,6 +182,51 @@
   }
 }
 
+@keyframes backgroundFadeInOut {
+  0%, 100% {
+    opacity: 0.1;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-5px) scale(1.05);
+  }
+}
+
+@keyframes primaryGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 12px var(--primary),
+      0 0 24px var(--primary),
+      0 0 36px var(--primary);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow:
+      0 0 20px var(--primary),
+      0 0 40px var(--primary),
+      0 0 60px var(--primary);
+    transform: scale(1.1);
+  }
+}
+
+@keyframes amberGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 12px rgba(251, 191, 36, 0.8),
+      0 0 24px rgba(251, 191, 36, 0.6),
+      0 0 36px rgba(251, 191, 36, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow:
+      0 0 20px rgba(251, 191, 36, 1),
+      0 0 40px rgba(251, 191, 36, 0.8),
+      0 0 60px rgba(251, 191, 36, 0.6);
+    transform: scale(1.1);
+  }
+}
+
 @keyframes matrixRain {
   0% {
     transform: translateY(-100px) rotate(0deg);
@@ -152,6 +268,16 @@
     width: 25px;
     height: 28px;
   }
+
+  .background-matrix .falling-hieroglyph {
+    font-size: 1rem;
+
+    // Ограничиваем максимальный размер на мобильных
+    &.glowing-primary,
+    &.glowing-amber {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 @media (min-width: 1024px) {
@@ -162,6 +288,16 @@
   .falling-hieroglyph svg {
     width: 35px;
     height: 38px;
+  }
+
+  .background-matrix .falling-hieroglyph {
+    font-size: 1.5rem;
+
+    // Увеличиваем максимальный размер на больших экранах
+    &.glowing-primary,
+    &.glowing-amber {
+      font-size: 3rem;
+    }
   }
 }
 
@@ -189,5 +325,87 @@
   .falling-hieroglyph {
     animation-duration: 2s;
     opacity: 1;
+  }
+}
+
+// Стили для прелоадера с иероглифами
+.preloader-hieroglyphs {
+  .font-['Hieroglyphic'] {
+    font-family: 'Hieroglyphic', serif;
+    text-shadow:
+      0 0 20px rgba(251, 191, 36, 0.8),
+      0 0 40px rgba(251, 191, 36, 0.4);
+    transition: all 0.2s ease-in-out;
+
+    // Анимация появления для каждого нового иероглифа
+    animation: preloaderHieroglyph 0.2s ease-in-out;
+  }
+
+  .font-mono {
+    color: rgba(251, 191, 36, 0.6);
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+  }
+}
+
+// Анимация для иероглифов в прелоадере
+@keyframes preloaderHieroglyph {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-10deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+// Анимация для смены фраз в прелоадере
+@keyframes phraseFadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  15%, 85% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+// Дополнительная анимация для плавного появления фраз
+@keyframes phraseSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Улучшенная анимация пульсации для прелоадера
+@keyframes preloaderPulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+    text-shadow:
+      0 0 20px rgba(251, 191, 36, 0.8),
+      0 0 40px rgba(251, 191, 36, 0.4);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+    text-shadow:
+      0 0 30px rgba(251, 191, 36, 1),
+      0 0 60px rgba(251, 191, 36, 0.6),
+      0 0 90px rgba(251, 191, 36, 0.3);
   }
 }

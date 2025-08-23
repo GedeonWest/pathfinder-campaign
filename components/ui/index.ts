@@ -41,6 +41,12 @@ export {
   PulsingHieroglyphs
 } from "./matrix-hieroglyphs"
 
+// Background matrix components
+export {
+  BackgroundMatrix,
+  AdaptiveBackgroundMatrix
+} from "./background-matrix"
+
 // Re-export sections
 export * from "../sections"
 
