@@ -34,7 +34,7 @@ export default function CharactersPage() {
 
 
         {/* Второй блок - черно-белые карточки в шахматном порядке */}
-        <section>
+        <section className="z-30 relative">
           <div className="chessboard-grid">
             {charactersBW.map((character, index) => (
               <div key={character.id} className="character-card">

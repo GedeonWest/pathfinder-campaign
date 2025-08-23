@@ -1,0 +1,184 @@
+{
+  "generalStats": {
+    "deaths": [
+      {
+        "character": "Мелдрет",
+        "session": 3,
+        "cause": "Падение в ловушку с шипами",
+        "resurrected": true,
+        "resurrectionMethod": "Воскрешение от Исиды"
+      },
+      {
+        "character": "Наэрис",
+        "session": 7,
+        "cause": "Критический удар от мумии-стража",
+        "resurrected": true,
+        "resurrectionMethod": "Воскрешение от Исиды"
+      },
+      {
+        "character": "Калия",
+        "session": 12,
+        "cause": "Отравление змеиным ядом",
+        "resurrected": false,
+        "resurrectionMethod": "Погибла окончательно"
+      }
+    ],
+    "totalEnemiesKilled": 47,
+    "undeadKilled": 23,
+    "bossesKilled": [
+      {
+        "name": "Страж-мумия Ахентепи",
+        "killedBy": "Мелдрет",
+        "session": 2,
+        "location": "Гробница Ахентепи"
+      },
+      {
+        "name": "Древний Страж Тота",
+        "killedBy": "Наэрис",
+        "session": 4,
+        "location": "Святилище Ученого Глаза"
+      },
+      {
+        "name": "Лич Забытого Фараона",
+        "killedBy": "Группа",
+        "session": 6,
+        "location": "Гробница Забытого Фараона"
+      },
+      {
+        "name": "Змеиный Культист Аспид",
+        "killedBy": "Винд",
+        "session": 12,
+        "location": "Гробница Аспида"
+      }
+    ],
+    "arcsCompleted": 4,
+    "totalArcs": 6,
+    "importantLocationsDiscovered": 8,
+    "artifactsFound": 12,
+    "mapsDrawn": 5,
+    "masterCritsTotal": 18,
+    "masterCritsByDash": 7
+  },
+  "sessionStats": [
+    {
+      "session": 1,
+      "location": "Некрополь Вати",
+      "outcome": "Победа - Найден Серебряный Скарабей",
+      "enemiesKilled": 3,
+      "treasuresFound": 1,
+      "deaths": 0
+    },
+    {
+      "session": 2,
+      "location": "Гробница Ахентепи",
+      "outcome": "Победа - Побежден Страж-мумия",
+      "enemiesKilled": 5,
+      "treasuresFound": 2,
+      "deaths": 0
+    },
+    {
+      "session": 3,
+      "location": "Дом Пентеру",
+      "outcome": "Победа - Обнаружены Древние Свитки",
+      "enemiesKilled": 2,
+      "treasuresFound": 1,
+      "deaths": 1
+    },
+    {
+      "session": 4,
+      "location": "Святилище Ученого Глаза",
+      "outcome": "Победа - Разгадана Загадка Тота",
+      "enemiesKilled": 4,
+      "treasuresFound": 1,
+      "deaths": 0
+    },
+    {
+      "session": 5,
+      "location": "Рабские Траншеи",
+      "outcome": "Победа - Спасены Запертые Шахтеры",
+      "enemiesKilled": 6,
+      "treasuresFound": 0,
+      "deaths": 0
+    },
+    {
+      "session": 6,
+      "location": "Гробница Забытого Фараона",
+      "outcome": "Частично - Отступили от Лича",
+      "enemiesKilled": 8,
+      "treasuresFound": 1,
+      "deaths": 0
+    },
+    {
+      "session": 7,
+      "location": "Безсолнечная Крепость",
+      "outcome": "Победа - Освобождены Политические Заключенные",
+      "enemiesKilled": 7,
+      "treasuresFound": 2,
+      "deaths": 1
+    },
+    {
+      "session": 8,
+      "location": "Пирамида Хети III",
+      "outcome": "Победа - Захвачена Золотая Маска",
+      "enemiesKilled": 9,
+      "treasuresFound": 3,
+      "deaths": 0
+    },
+    {
+      "session": 9,
+      "location": "Сдвигающиеся Пески",
+      "outcome": "Победа - Пережили Песчаную Засаду",
+      "enemiesKilled": 3,
+      "treasuresFound": 0,
+      "deaths": 0
+    },
+    {
+      "session": 10,
+      "location": "Храм Четырех Фараонов",
+      "outcome": "Победа - Пробужден Древний Страж",
+      "enemiesKilled": 5,
+      "treasuresFound": 1,
+      "deaths": 0
+    },
+    {
+      "session": 11,
+      "location": "Ворота Некрополя",
+      "outcome": "Победа - Защитились от Орды Нежити",
+      "enemiesKilled": 12,
+      "treasuresFound": 0,
+      "deaths": 0
+    },
+    {
+      "session": 12,
+      "location": "Гробница Аспида",
+      "outcome": "Победа - Побежден Змеиный Культ",
+      "enemiesKilled": 6,
+      "treasuresFound": 1,
+      "deaths": 1
+    },
+    {
+      "session": 13,
+      "location": "Шепчущие Пески",
+      "outcome": "Победа - Разрушено Древнее Проклятие",
+      "enemiesKilled": 4,
+      "treasuresFound": 0,
+      "deaths": 0
+    },
+    {
+      "session": 14,
+      "location": "Камера Обновления",
+      "outcome": "Победа - Восстановлены Священные Воды",
+      "enemiesKilled": 3,
+      "treasuresFound": 1,
+      "deaths": 0
+    },
+    {
+      "session": 15,
+      "location": "Затонувшая Пирамида",
+      "outcome": "В процессе - Сражаемся с Собек-Ра",
+      "enemiesKilled": 2,
+      "treasuresFound": 0,
+      "deaths": 0
+    }
+  ]
+}
