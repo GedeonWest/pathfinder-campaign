@@ -17,8 +17,8 @@ export default function Header() {
       <Container maxWidth="6xl" padding="none">
         <Flex justify="between" align="center" className="h-16">
           {/* Logo */}
-          <Flex align="center" gap="sm">
-            <AnkhIcon size="lg" className="text-primary" />
+          <Flex align="center" gap="none">
+            <img src='/logo.png' className="w-12 h-12 mx-auto text-primary mb-0 mr-2" style={{ filter: 'drop-shadow(0 0 10px oklch(85.2% 0.199 91.936)) !important' }} />
             <Link href="/" variant="primary" size="lg" className="font-serif font-bold">
               Маски Мумии
             </Link>
@@ -45,7 +45,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
-            size="sm"
+            size="md"
             className="md:hidden text-primary hover:bg-primary/10"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >

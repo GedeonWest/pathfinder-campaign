@@ -26,10 +26,8 @@ export function MainHero({ onExploreClick }: MainHeroProps) {
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <div className="mb-8">
-          <svg className="w-24 h-24 mx-auto text-primary mb-6" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L2 22h20L12 2zm0 4.5L18.5 20h-13L12 6.5z" />
-          </svg>
+        <div className="mb-3">
+          <img src='/logo.png' className="w-64 h-64 mx-auto text-primary mb-0" style={{ filter: 'drop-shadow(0 0 10px oklch(85.2% 0.199 91.936)) !important' }} />
         </div>
 
         <h1 className="font-serif text-5xl md:text-7xl font-bold text-primary mb-4 tracking-wide">Маски Мумии</h1>

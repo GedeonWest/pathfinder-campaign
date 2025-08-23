@@ -1,0 +1,193 @@
+// Стили для матричных эффектов иероглифов
+
+// Основной контейнер для матричных анимаций
+.matrix-hieroglyphs {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(251, 191, 36, 0.05) 50%,
+    rgba(251, 191, 36, 0.1) 100%
+  );
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 0.5rem;
+  min-height: 400px;
+
+  // Фоновый градиент
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(251, 191, 36, 0.1) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+}
+
+// SVG иероглифы в матрице
+.matrix-hieroglyphs svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+
+  .hierojax-svg-sign {
+    font-family: 'Hieroglyphic', serif;
+    font-size: 1.5rem;
+    dominant-baseline: middle;
+    text-anchor: middle;
+  }
+}
+
+// Падающие иероглифы
+.falling-hieroglyph {
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+
+  // Анимация появления
+  animation: fadeInOut 3s ease-in-out infinite;
+
+  // Разные задержки для разнообразия
+  &:nth-child(odd) {
+    animation-delay: 0s;
+  }
+
+  &:nth-child(even) {
+    animation-delay: 1.5s;
+  }
+
+  &:nth-child(3n) {
+    animation-delay: 3s;
+  }
+}
+
+// Эффект свечения снизу
+.glow-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5rem;
+  background: linear-gradient(
+    to top,
+    rgba(251, 191, 36, 0.2) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+// Пульсирующие иероглифы
+.pulsing-hieroglyph {
+  transition: all 0.5s ease-in-out;
+
+  &.active {
+    transform: scale(1.25);
+    color: rgb(251, 191, 36);
+    text-shadow:
+      0 0 20px rgba(251, 191, 36, 0.8),
+      0 0 40px rgba(251, 191, 36, 0.4);
+  }
+
+  &:not(.active) {
+    transform: scale(1);
+    color: rgb(180, 83, 9);
+    text-shadow: none;
+  }
+}
+
+// Анимации
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.1);
+  }
+}
+
+@keyframes matrixRain {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 10px rgba(251, 191, 36, 0.6),
+      0 0 20px rgba(251, 191, 36, 0.3);
+  }
+  50% {
+    text-shadow:
+      0 0 20px rgba(251, 191, 36, 0.8),
+      0 0 40px rgba(251, 191, 36, 0.6),
+      0 0 60px rgba(251, 191, 36, 0.4);
+  }
+}
+
+// Адаптивные стили
+@media (max-width: 768px) {
+  .matrix-hieroglyphs {
+    min-height: 300px;
+  }
+
+  .falling-hieroglyph svg {
+    width: 25px;
+    height: 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .matrix-hieroglyphs {
+    min-height: 500px;
+  }
+
+  .falling-hieroglyph svg {
+    width: 35px;
+    height: 38px;
+  }
+}
+
+// Эффект мерцания для матричного режима
+.matrix-mode-active {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+// Дополнительные эффекты для разных интенсивностей
+.intensity-light {
+  .falling-hieroglyph {
+    animation-duration: 4s;
+    opacity: 0.6;
+  }
+}
+
+.intensity-medium {
+  .falling-hieroglyph {
+    animation-duration: 3s;
+    opacity: 0.8;
+  }
+}
+
+.intensity-heavy {
+  .falling-hieroglyph {
+    animation-duration: 2s;
+    opacity: 1;
+  }
+}

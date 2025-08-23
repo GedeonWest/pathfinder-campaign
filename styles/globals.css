@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import './hierojax.scss';
+@import './matrix-effects.scss';
 
 @custom-variant dark (&:is(.dark *));
 

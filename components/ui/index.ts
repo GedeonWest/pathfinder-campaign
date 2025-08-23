@@ -25,7 +25,21 @@ export { HeroCard } from "./hero-card"
 export { Modal, ModalContent, ModalHeader, ModalBody } from "./modal"
 
 // Hieroglyphs components
-export { Hieroglyphs, RunningHieroglyphs } from "./hieroglyphs"
+export { Hieroglyphs } from "./hieroglyphs"
+export {
+  EgyptianHieroglyphs,
+  AnkhSymbol,
+  EyeSymbol,
+  LongText,
+  EGYPTIAN_HIEROGLYPHS
+} from "./egyptian-hieroglyphs"
+
+// Matrix animation components
+export {
+  MatrixHieroglyphs,
+  HieroglyphRain,
+  PulsingHieroglyphs
+} from "./matrix-hieroglyphs"
 
 // Re-export sections
 export * from "../sections"
