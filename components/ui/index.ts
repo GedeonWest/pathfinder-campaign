@@ -50,6 +50,9 @@ export {
 // Re-export sections
 export * from "../sections"
 
+// Re-export materials components
+export * from "../materials"
+
 // Feedback components
 export { Badge, badgeVariants } from "./badge"
 

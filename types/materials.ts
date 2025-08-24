@@ -26,4 +26,5 @@ export interface MaterialFilter {
   selectedLocation?: string
   selectedSession?: string
   showCollectedOnly?: boolean
+  sortBy?: 'name' | 'date' | 'type'
 }

@@ -81,8 +81,7 @@ export function getCollectionStats(materials: Material[]) {
   return {
     total,
     collected,
-    uncollected,
-    collectionRate: total > 0 ? Math.round((collected / total) * 100) : 0
+    uncollected
   }
 }
 

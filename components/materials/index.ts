@@ -1,0 +1,7 @@
+export { MaterialsHeader } from './materials-header'
+export { MaterialsStats } from './materials-stats'
+export { MaterialsFilters } from './materials-filters'
+export { MaterialsList } from './materials-list'
+export { MaterialCard } from './material-card'
+export { MaterialModal } from './material-modal'
+export { MaterialsCounter } from './materials-counter'
