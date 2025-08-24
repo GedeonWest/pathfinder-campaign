@@ -19,7 +19,7 @@ export default function Header() {
         <Flex justify="between" align="center" className="h-16">
           {/* Logo */}
           <Flex align="center" gap="none">
-            <img src='./logo.png' className="w-12 h-12 mx-auto text-primary mb-0 mr-2" style={{ filter: 'drop-shadow(0 0 10px oklch(85.2% 0.199 91.936)) !important' }} />
+            <img src='/logo.png' className="w-12 h-12 mx-auto text-primary mb-0 mr-2" style={{ filter: 'drop-shadow(0 0 10px oklch(85.2% 0.199 91.936)) !important' }} />
             <Link href={getLink("/")} variant="primary" size="lg" className="font-serif font-bold">
               Mummy's Mask
             </Link>

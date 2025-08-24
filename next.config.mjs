@@ -11,9 +11,8 @@ const nextConfig = {
   },
   output: 'export',
   trailingSlash: true,
-  // Убираем basePath и assetPrefix для упрощения
-  // basePath: process.env.NODE_ENV === 'production' ? '/pathfinder-campaign' : '',
-  // assetPrefix: process.env.NODE_ENV === 'production' ? '/pathfinder-campaign' : '',
+  basePath: '/pathfinder-campaign',
+  assetPrefix: '/pathfinder-campaign',
 }
 
 export default nextConfig

@@ -7,15 +7,15 @@ export function cn(...inputs: ClassValue[]) {
 
 // Функция для правильных путей на GitHub Pages
 export function getBasePath() {
-  // На GitHub Pages всегда используем относительные пути
-  return ''
+  // На GitHub Pages используем basePath из next.config.mjs
+  return '/pathfinder-campaign'
 }
 
 // Функция для создания правильных ссылок
 export function getLink(href: string) {
-  // Убираем ведущий слэш для относительных путей
+  // Добавляем basePath для внутренних ссылок
   if (href.startsWith('/')) {
-    return href.slice(1)
+    return '/pathfinder-campaign' + href
   }
   return href
 }
