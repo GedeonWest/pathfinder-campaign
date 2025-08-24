@@ -4,7 +4,7 @@ import { ArrowLeft, Download, Coins, Crown } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getCharacterById, getAllCharacters } from "@/lib/characters"
-import { getLink } from "@/lib/utils"
+import { getLink, getImagePath } from "@/lib/utils"
 import { ROUTES } from "@/lib/routes"
 
 // Генерируем статические параметры для всех персонажей
@@ -44,9 +44,9 @@ export default function CharacterDetailPage({ params }: { params: { id: string }
       <div className="relative h-[70vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={character.image || "./placeholder.svg"}
-            alt={character.fullName}
-            className="w-full h-full object-cover"
+            src={character.image ? getImagePath(character.image) : getImagePath("./placeholder.svg")}
+            alt={character.name}
+            className="w-full h-full object-cover rounded-t-full"
           />
           {/* Затемнение для читаемости текста */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>

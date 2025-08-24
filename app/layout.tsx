@@ -4,6 +4,7 @@ import { Open_Sans } from "next/font/google"
 import Header from "@/components/header"
 import { AdaptiveBackgroundMatrix } from "@/components/ui"
 import "./globals.css"
+import { getImagePath } from "@/lib/utils"
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -18,19 +19,19 @@ export const metadata: Metadata = {
   generator: "v0.app",
   icons: {
     icon: [
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: getImagePath('/favicon-16x16.png'), sizes: '16x16', type: 'image/png' },
+      { url: getImagePath('/favicon-32x32.png'), sizes: '32x32', type: 'image/png' },
     ],
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    shortcut: getImagePath('/favicon.ico'),
+    apple: getImagePath('/apple-touch-icon.png'),
     other: [
       {
         rel: 'android-chrome-192x192',
-        url: '/android-chrome-192x192.png',
+        url: getImagePath('/android-chrome-192x192.png'),
       },
       {
         rel: 'android-chrome-512x512',
-        url: '/android-chrome-512x512.png',
+        url: getImagePath('/android-chrome-512x512.png'),
       },
     ],
   },
@@ -44,8 +45,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${openSans.variable}`}>
       <head>
-                <link rel="stylesheet" type="text/css" href="./hierojax/hierojax.css" />
-        <script type="text/javascript" src="./hierojax/hierojax.js" defer></script>
+                <link rel="stylesheet" type="text/css" href={getImagePath("./hierojax/hierojax.css")} />
+        <script type="text/javascript" src={getImagePath("./hierojax/hierojax.js")} defer></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `

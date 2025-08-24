@@ -2,7 +2,7 @@
 
 import { LucideIcon } from "lucide-react"
 import Link from "next/link"
-import { getLink } from "@/lib/utils"
+import { getLink, getImagePath } from "@/lib/utils"
 import { ROUTES } from "@/lib/routes"
 
 export interface CharacterBW {
@@ -30,11 +30,13 @@ export function CharacterCardBW({ character, index }: CharacterCardBWProps) {
         <div className="relative overflow-hidden rounded-lg cursor-pointer">
           {/* Изображение персонажа */}
           <div className="w-full h-[450px] relative">
-                              <img
-                    src={character.image || "./placeholder.svg"}
-                    alt={character.name}
-                    className="w-full h-full object-cover"
-                  />
+            <div className="character-arch w-32 h-40 p-2">
+              <img
+                src={character.image ? getImagePath(character.image) : getImagePath("./placeholder.svg")}
+                alt={character.name}
+                className="w-full h-full object-cover rounded-t-full group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
             {/* Затемнение для лучшей читаемости текста */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           </div>

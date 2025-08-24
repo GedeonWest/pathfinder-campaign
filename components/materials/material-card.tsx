@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
 import { MapIcon, ScrollIcon, GemIcon, EyeIcon, ShieldIcon, SwordIcon, ShirtIcon, WrenchIcon } from "@/components/ui/icon"
 import type { Material } from "@/types/materials"
+import { getImagePath } from "@/lib/utils"
 
 interface MaterialCardProps {
   material: Material
@@ -64,11 +65,11 @@ export function MaterialCard({ material, onClick }: MaterialCardProps) {
 
       <CardContent>
         {material.imageUrl && (
-          <div className="mb-4">
+          <div className="w-full h-48 overflow-hidden rounded-t-lg">
             <img
-              src={material.imageUrl}
+              src={getImagePath(material.imageUrl)}
               alt={material.name}
-              className="w-full h-32 object-cover rounded-lg border border-border material-image"
+              className="w-full h-full object-cover"
             />
           </div>
         )}

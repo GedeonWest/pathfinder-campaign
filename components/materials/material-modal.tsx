@@ -4,6 +4,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Typography } from "@/components/ui/typography"
 import { MapIcon, ScrollIcon, GemIcon, EyeIcon, ShieldIcon, SwordIcon, ShirtIcon, WrenchIcon } from "@/components/ui/icon"
 import type { Material } from "@/types/materials"
+import { getImagePath } from "@/lib/utils"
 
 interface MaterialModalProps {
   material: Material | null
@@ -67,11 +68,11 @@ export function MaterialModal({ material, isOpen, onClose }: MaterialModalProps)
         <ScrollArea className="max-h-[60vh] pr-4">
           <div className="space-y-6">
             {material.imageUrl && (
-              <div className="text-center">
+              <div className="w-full h-64 overflow-hidden rounded-lg mb-4">
                 <img
-                  src={material.imageUrl}
+                  src={getImagePath(material.imageUrl)}
                   alt={material.name}
-                  className="max-w-full max-h-96 object-contain rounded-lg border border-border"
+                  className="w-full h-full object-cover"
                 />
               </div>
             )}

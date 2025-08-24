@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Crown } from "lucide-react"
 import Link from "next/link"
-import { getLink } from "@/lib/utils"
+import { getLink, getImagePath } from "@/lib/utils"
 import Masonry from "react-masonry-css"
 import { getAllCharacters } from "@/lib/characters"
 import { HeroesIcon } from "../ui/icons/heroes"
@@ -50,11 +50,11 @@ export function CampaignHeroes() {
             <div className="text-center hover:scale-105 transition-transform duration-300">
               {/* Изображение в арке */}
               <div className="flex justify-center mb-3">
-                <div className="character-arch w-24 h-28 p-1">
+                <div className="character-arch w-32 h-40 p-2">
                   <img
-                    src={character.image || "./placeholder.svg"}
+                    src={character.image ? getImagePath(character.image) : getImagePath("./placeholder.svg")}
                     alt={character.name}
-                    className="w-full h-full object-cover rounded-t-full"
+                    className="w-full h-full object-cover rounded-t-full group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               </div>

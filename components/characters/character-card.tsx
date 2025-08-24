@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { LucideIcon } from "lucide-react"
 import Link from "next/link"
-import { getLink } from "@/lib/utils"
+import { getLink, getImagePath } from "@/lib/utils"
 import { ROUTES } from "@/lib/routes"
 
 export interface Character {
@@ -34,11 +34,11 @@ export function CharacterCard({ character, index }: CharacterCardProps) {
         <CardHeader className="pb-4">
           <div className="flex justify-center mb-4">
             <div className="character-arch w-32 h-40 p-2">
-                              <img
-                  src={character.image || "./placeholder.svg"}
-                  alt={character.name}
-                  className="w-full h-full object-cover rounded-t-full group-hover:scale-105 transition-transform duration-300"
-                />
+              <img
+                src={character.image ? getImagePath(character.image) : getImagePath("./placeholder.svg")}
+                alt={character.name}
+                className="w-full h-full object-cover rounded-t-full group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
           </div>
 

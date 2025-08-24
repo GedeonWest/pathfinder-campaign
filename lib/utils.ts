@@ -13,15 +13,30 @@ export function getBasePath() {
 
 // Функция для создания правильных ссылок
 export function getLink(href: string) {
-  // Проверяем, не содержит ли уже href basePath
+  // Если href уже содержит basePath, возвращаем как есть
   if (href.startsWith('/pathfinder-campaign')) {
     return href
   }
-  // Добавляем basePath для внутренних ссылок
+  // Если href начинается с /, добавляем basePath
   if (href.startsWith('/')) {
     return '/pathfinder-campaign' + href
   }
+  // Если href не начинается с /, это относительный путь, возвращаем как есть
   return href
+}
+
+// Функция для получения правильного пути к картинкам
+export function getImagePath(src: string) {
+  // Если src уже содержит basePath, возвращаем как есть
+  if (src.startsWith('/pathfinder-campaign')) {
+    return src
+  }
+  // Если src начинается с /, убираем / и добавляем basePath
+  if (src.startsWith('/')) {
+    return '/pathfinder-campaign' + src
+  }
+  // Если src не начинается с /, это относительный путь, возвращаем как есть
+  return src
 }
 
 // Функция для получения полного URL с basePath

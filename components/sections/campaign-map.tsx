@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { useState } from "react"
 import { Modal, ModalContent, ModalHeader, ModalBody } from "@/components/ui"
+import { getImagePath } from "@/lib/utils"
 
 // Pyramid icon component
 function PyramidIcon({ className }: { className?: string }) {
@@ -25,8 +26,8 @@ export function CampaignMap() {
           </h3>
           <button onClick={() => setIsMapModalOpen(true)} className="relative aspect-square bg-gradient-to-br from-amber-50 to-orange-100 rounded-lg overflow-hidden cursor-pointer">
             <img
-              src="/map.png"
-              alt="Карта Вати"
+              src={getImagePath("/map.png")}
+              alt="Карта кампании"
               className="w-full h-full object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
 
             />
@@ -46,22 +47,19 @@ export function CampaignMap() {
             Карта древних земель Вати
           </ModalHeader>
           <ModalBody className="p-0">
-            <div className="relative">
+            <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden border border-primary/30 shadow-2xl">
               <img
-                src="/map.png"
-                alt="Карта Вати - увеличенный вид"
-                className="w-full h-auto max-h-[70vh] object-contain"
-                onLoad={(e) => {
-                  const target = e.target as HTMLImageElement
-                  target.style.opacity = "1"
-                }}
-                style={{ opacity: 0, transition: "opacity 0.3s ease-in-out" }}
+                src={getImagePath("/map.png")}
+                alt="Карта кампании"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="text-primary/60 text-sm font-medium">
-                  Карта древних земель Вати
-                </div>
-              </div>
+            </div>
+            <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden border border-primary/30 shadow-xl">
+              <img
+                src={getImagePath("/map.png")}
+                alt="Карта кампании"
+                className="w-full h-full object-cover"
+              />
             </div>
           </ModalBody>
         </ModalContent>
