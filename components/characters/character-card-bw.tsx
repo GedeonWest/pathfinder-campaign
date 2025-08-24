@@ -3,6 +3,7 @@
 import { LucideIcon } from "lucide-react"
 import Link from "next/link"
 import { getLink } from "@/lib/utils"
+import { ROUTES } from "@/lib/routes"
 
 export interface CharacterBW {
   id: string
@@ -25,15 +26,15 @@ export function CharacterCardBW({ character, index }: CharacterCardBWProps) {
       className="character-card animate-fade-in-up group"
       style={{ animationDelay: `${index * 0.2}s` }}
     >
-      <Link href={getLink(`/characters/${character.id.replace('-bw', '')}`)} className="block">
+      <Link href={getLink(ROUTES.CHARACTER_DETAIL(character.id.replace('-bw', '')))} className="block">
         <div className="relative overflow-hidden rounded-lg cursor-pointer">
           {/* Изображение персонажа */}
           <div className="w-full h-[450px] relative">
-            <img
-              src={character.image || "placeholder.svg"}
-              alt={character.name}
-              className="w-full h-full object-cover"
-            />
+                              <img
+                    src={character.image || "/placeholder.svg"}
+                    alt={character.name}
+                    className="w-full h-full object-cover"
+                  />
             {/* Затемнение для лучшей читаемости текста */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           </div>

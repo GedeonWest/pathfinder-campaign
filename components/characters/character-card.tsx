@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { LucideIcon } from "lucide-react"
 import Link from "next/link"
 import { getLink } from "@/lib/utils"
+import { ROUTES } from "@/lib/routes"
 
 export interface Character {
   id: string
@@ -33,11 +34,11 @@ export function CharacterCard({ character, index }: CharacterCardProps) {
         <CardHeader className="pb-4">
           <div className="flex justify-center mb-4">
             <div className="character-arch w-32 h-40 p-2">
-              <img
-                src={character.image || "placeholder.svg"}
-                alt={character.name}
-                className="w-full h-full object-cover rounded-t-full group-hover:scale-105 transition-transform duration-300"
-              />
+                              <img
+                  src={character.image || "/placeholder.svg"}
+                  alt={character.name}
+                  className="w-full h-full object-cover rounded-t-full group-hover:scale-105 transition-transform duration-300"
+                />
             </div>
           </div>
 
@@ -72,7 +73,7 @@ export function CharacterCard({ character, index }: CharacterCardProps) {
             variant="outline"
             className="w-full border-primary/50 text-primary hover:bg-primary/10 bg-transparent"
           >
-            <Link href={getLink(`/characters/${character.id}`)}>Подробнее</Link>
+            <Link href={getLink(ROUTES.CHARACTER_DETAIL(character.id))}>Подробнее</Link>
           </Button>
         </CardContent>
       </Card>

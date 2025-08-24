@@ -19,3 +19,8 @@ export function getLink(href: string) {
   }
   return href
 }
+
+// Функция для получения полного URL с basePath
+export function getFullUrl(route: string): string {
+  return getBasePath() + route
+}

@@ -7,6 +7,7 @@ import { getLink } from "@/lib/utils"
 import Masonry from "react-masonry-css"
 import { getAllCharacters } from "@/lib/characters"
 import { HeroesIcon } from "../ui/icons/heroes"
+import { ROUTES } from "@/lib/routes"
 
 const characters = getAllCharacters()
 
@@ -42,7 +43,7 @@ export function CampaignHeroes() {
         {characters.map((character, index) => (
           <Link
             key={character.id}
-            href={getLink(`/characters/${character.id}`)}
+            href={getLink(ROUTES.CHARACTER_DETAIL(character.id))}
             className="block mb-6 animate-fade-in-up group cursor-pointer"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
@@ -51,7 +52,7 @@ export function CampaignHeroes() {
               <div className="flex justify-center mb-3">
                 <div className="character-arch w-24 h-28 p-1">
                   <img
-                    src={character.image || "placeholder.svg"}
+                    src={character.image || "/placeholder.svg"}
                     alt={character.name}
                     className="w-full h-full object-cover rounded-t-full"
                   />
@@ -79,7 +80,7 @@ export function CampaignHeroes() {
 
       <div className="text-center mt-12">
         <Button variant="outline" className="border-primary/40 text-primary hover:bg-primary/10 bg-transparent px-8 py-3">
-          <Link href={getLink("/characters")} className="flex items-center">
+          <Link href={getLink(ROUTES.CHARACTERS)} className="flex items-center">
             Посмотреть всех персонажей
             <HeroesIcon classNames="w-4 h-4 ml-2" />
           </Link>
