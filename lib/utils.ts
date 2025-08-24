@@ -7,22 +7,15 @@ export function cn(...inputs: ClassValue[]) {
 
 // Функция для правильных путей на GitHub Pages
 export function getBasePath() {
-  if (typeof window !== 'undefined') {
-    // В браузере определяем по текущему URL
-    const pathname = window.location.pathname
-    if (pathname.startsWith('/pathfinder-campaign')) {
-      return '/pathfinder-campaign'
-    }
-  }
-  // По умолчанию для production
-  return process.env.NODE_ENV === 'production' ? '/pathfinder-campaign' : ''
+  // На GitHub Pages всегда используем относительные пути
+  return ''
 }
 
 // Функция для создания правильных ссылок
 export function getLink(href: string) {
-  const basePath = getBasePath()
+  // Убираем ведущий слэш для относительных путей
   if (href.startsWith('/')) {
-    return basePath + href
+    return href.slice(1)
   }
   return href
 }
