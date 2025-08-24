@@ -13,6 +13,10 @@ export function getBasePath() {
 
 // Функция для создания правильных ссылок
 export function getLink(href: string) {
+  // Проверяем, не содержит ли уже href basePath
+  if (href.startsWith('/pathfinder-campaign')) {
+    return href
+  }
   // Добавляем basePath для внутренних ссылок
   if (href.startsWith('/')) {
     return '/pathfinder-campaign' + href

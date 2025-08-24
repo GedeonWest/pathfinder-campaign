@@ -35,7 +35,7 @@ export function CharacterCard({ character, index }: CharacterCardProps) {
           <div className="flex justify-center mb-4">
             <div className="character-arch w-32 h-40 p-2">
                               <img
-                  src={character.image || "/placeholder.svg"}
+                  src={character.image || "./placeholder.svg"}
                   alt={character.name}
                   className="w-full h-full object-cover rounded-t-full group-hover:scale-105 transition-transform duration-300"
                 />

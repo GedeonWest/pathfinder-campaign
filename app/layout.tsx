@@ -44,24 +44,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${openSans.variable}`}>
       <head>
-                <link rel="stylesheet" type="text/css" href="/hierojax/hierojax.css" />
-        <script type="text/javascript" src="/hierojax/hierojax.js" defer></script>
+                <link rel="stylesheet" type="text/css" href="./hierojax/hierojax.css" />
+        <script type="text/javascript" src="./hierojax/hierojax.js" defer></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               // Функция для инициализации HieroJax
               function initHieroJax() {
-                console.log('Initializing HieroJax...');
                 if (window.hierojax) {
-                  console.log('HieroJax found, processing fragments...');
                   try {
                     window.hierojax.processFragments();
-                    console.log('HieroJax processing completed');
                   } catch (error) {
-                    console.error('HieroJax processing error:', error);
+                    // Silent error handling
                   }
                 } else {
-                  console.log('HieroJax not found yet, retrying...');
                   // Повторяем попытку через 100ms
                   setTimeout(initHieroJax, 100);
                 }
@@ -72,7 +68,6 @@ export default function RootLayout({
 
               // Дополнительная проверка после полной загрузки страницы
               window.addEventListener("load", () => {
-                console.log('Page fully loaded, final HieroJax check...');
                 if (window.hierojax) {
                   window.hierojax.processFragments();
                 }

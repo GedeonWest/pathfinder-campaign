@@ -31,7 +31,7 @@ export function CharacterCardBW({ character, index }: CharacterCardBWProps) {
           {/* Изображение персонажа */}
           <div className="w-full h-[450px] relative">
                               <img
-                    src={character.image || "/placeholder.svg"}
+                    src={character.image || "./placeholder.svg"}
                     alt={character.name}
                     className="w-full h-full object-cover"
                   />
