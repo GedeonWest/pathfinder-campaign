@@ -42,7 +42,7 @@ export default function CharacterDetailPage({ params }: { params: { id: string }
       <div className="relative h-[70vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={character.image || "/placeholder.svg"}
+            src={character.image || "placeholder.svg"}
             alt={character.fullName}
             className="w-full h-full object-cover"
           />

@@ -25,7 +25,7 @@ export function CampaignMap() {
           </h3>
           <button onClick={() => setIsMapModalOpen(true)} className="relative aspect-square bg-gradient-to-br from-amber-50 to-orange-100 rounded-lg overflow-hidden cursor-pointer">
             <img
-              src="/map.png"
+              src="map.png"
               alt="Карта Вати"
               className="w-full h-full object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
 
@@ -48,7 +48,7 @@ export function CampaignMap() {
           <ModalBody className="p-0">
             <div className="relative">
               <img
-                src="/map.png"
+                src="map.png"
                 alt="Карта Вати - увеличенный вид"
                 className="w-full h-auto max-h-[70vh] object-contain"
                 onLoad={(e) => {

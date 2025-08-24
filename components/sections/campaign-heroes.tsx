@@ -50,7 +50,7 @@ export function CampaignHeroes() {
               <div className="flex justify-center mb-3">
                 <div className="character-arch w-24 h-28 p-1">
                   <img
-                    src={character.image || "/placeholder.svg"}
+                    src={character.image || "placeholder.svg"}
                     alt={character.name}
                     className="w-full h-full object-cover rounded-t-full"
                   />
