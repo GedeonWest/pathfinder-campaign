@@ -2,6 +2,7 @@
 
 import { LucideIcon } from "lucide-react"
 import Link from "next/link"
+import { getLink } from "@/lib/utils"
 
 export interface CharacterBW {
   id: string
@@ -24,7 +25,7 @@ export function CharacterCardBW({ character, index }: CharacterCardBWProps) {
       className="character-card animate-fade-in-up group"
       style={{ animationDelay: `${index * 0.2}s` }}
     >
-      <Link href={`/characters/${character.id.replace('-bw', '')}`} className="block">
+      <Link href={getLink(`/characters/${character.id.replace('-bw', '')}`)} className="block">
         <div className="relative overflow-hidden rounded-lg cursor-pointer">
           {/* Изображение персонажа */}
           <div className="w-full h-[450px] relative">

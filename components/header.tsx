@@ -8,6 +8,7 @@ import { Flex } from "@/components/ui/flex"
 import { Container } from "@/components/ui/container"
 import { Stack } from "@/components/ui/stack"
 import { AnkhIcon, MenuIcon, CloseIcon } from "@/components/ui/icon"
+import { getLink } from "@/lib/utils"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -19,7 +20,7 @@ export default function Header() {
           {/* Logo */}
           <Flex align="center" gap="none">
             <img src='logo.png' className="w-12 h-12 mx-auto text-primary mb-0 mr-2" style={{ filter: 'drop-shadow(0 0 10px oklch(85.2% 0.199 91.936)) !important' }} />
-            <Link href="/" variant="primary" size="lg" className="font-serif font-bold">
+            <Link href={getLink("/")} variant="primary" size="lg" className="font-serif font-bold">
               Mummy's Mask
             </Link>
           </Flex>
@@ -27,19 +28,19 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex">
             <Flex gap="xl">
-              <Link href="/" variant="default">
+              <Link href={getLink("/")} variant="default">
                 Главная
               </Link>
-              <Link href="/characters" variant="default">
+              <Link href={getLink("/characters")} variant="default">
                 Персонажи
               </Link>
-              <Link href="/statistics" variant="default">
+              <Link href={getLink("/statistics")} variant="default">
                 Статистика
               </Link>
-              <Link href="/adventure-log" variant="default">
+              <Link href={getLink("/adventure-log")} variant="default">
                 Журнал
               </Link>
-              <Link href="/materials" variant="default">
+              <Link href={getLink("/materials")} variant="default">
                 Материалы
               </Link>
             </Flex>
@@ -62,7 +63,7 @@ export default function Header() {
             <nav>
               <Stack spacing="sm">
                 <Link
-                  href="/"
+                  href={getLink("/")}
                   variant="default"
                   onClick={() => setIsMenuOpen(false)}
                   className="px-2 py-1"
@@ -70,7 +71,7 @@ export default function Header() {
                   Главная
                 </Link>
                 <Link
-                  href="/characters"
+                  href={getLink("/characters")}
                   variant="default"
                   onClick={() => setIsMenuOpen(false)}
                   className="px-2 py-1"
@@ -78,7 +79,7 @@ export default function Header() {
                   Персонажи
                 </Link>
                 <Link
-                  href="/statistics"
+                  href={getLink("/statistics")}
                   variant="default"
                   onClick={() => setIsMenuOpen(false)}
                   className="px-2 py-1"
@@ -86,7 +87,7 @@ export default function Header() {
                   Статистика
                 </Link>
                 <Link
-                  href="/adventure-log"
+                  href={getLink("/adventure-log")}
                   variant="default"
                   onClick={() => setIsMenuOpen(false)}
                   className="px-2 py-1"
@@ -94,7 +95,7 @@ export default function Header() {
                   Журнал
                 </Link>
                 <Link
-                  href="/materials"
+                  href={getLink("/materials")}
                   variant="default"
                   onClick={() => setIsMenuOpen(false)}
                   className="px-2 py-1"

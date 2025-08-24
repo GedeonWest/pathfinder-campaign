@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { LucideIcon } from "lucide-react"
 import Link from "next/link"
+import { getLink } from "@/lib/utils"
 
 export interface Character {
   id: string
@@ -71,7 +72,7 @@ export function CharacterCard({ character, index }: CharacterCardProps) {
             variant="outline"
             className="w-full border-primary/50 text-primary hover:bg-primary/10 bg-transparent"
           >
-            <Link href={`/characters/${character.id}`}>Подробнее</Link>
+            <Link href={getLink(`/characters/${character.id}`)}>Подробнее</Link>
           </Button>
         </CardContent>
       </Card>

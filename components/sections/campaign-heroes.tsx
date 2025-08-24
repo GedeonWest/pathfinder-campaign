@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Crown } from "lucide-react"
 import Link from "next/link"
+import { getLink } from "@/lib/utils"
 import Masonry from "react-masonry-css"
 import { getAllCharacters } from "@/lib/characters"
 import { HeroesIcon } from "../ui/icons/heroes"
@@ -41,7 +42,7 @@ export function CampaignHeroes() {
         {characters.map((character, index) => (
           <Link
             key={character.id}
-            href={`/characters/${character.id}`}
+            href={getLink(`/characters/${character.id}`)}
             className="block mb-6 animate-fade-in-up group cursor-pointer"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
@@ -78,7 +79,7 @@ export function CampaignHeroes() {
 
       <div className="text-center mt-12">
         <Button variant="outline" className="border-primary/40 text-primary hover:bg-primary/10 bg-transparent px-8 py-3">
-          <Link href="/characters" className="flex items-center">
+          <Link href={getLink("/characters")} className="flex items-center">
             Посмотреть всех персонажей
             <HeroesIcon classNames="w-4 h-4 ml-2" />
           </Link>

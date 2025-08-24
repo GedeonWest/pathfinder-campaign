@@ -4,6 +4,7 @@ import { ArrowLeft, Download, Coins, Crown } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getCharacterById, getAllCharacters } from "@/lib/characters"
+import { getLink } from "@/lib/utils"
 
 // Генерируем статические параметры для всех персонажей
 export async function generateStaticParams() {
@@ -30,7 +31,7 @@ export default function CharacterDetailPage({ params }: { params: { id: string }
             variant="ghost"
             className="text-primary hover:bg-primary/10"
           >
-            <Link href="/characters" className="flex items-center space-x-2">
+            <Link href={getLink("/characters")} className="flex items-center space-x-2">
               <ArrowLeft className="w-4 h-4" />
               <span>Назад к персонажам</span>
             </Link>
