@@ -44,13 +44,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${openSans.variable}`}>
       <head>
-        <link rel="stylesheet" type="text/css" href="hierojax/hierojax.css" />
-        <script type="text/javascript" src="hierojax/hierojax.js"></script>
+                <link rel="stylesheet" type="text/css" href="hierojax/hierojax.css" />
+        <script type="text/javascript" src="hierojax/hierojax.js" defer></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              window.addEventListener("DOMContentLoaded", () => {
-                console.log('DOM loaded, checking HieroJax...');
+              // Функция для инициализации HieroJax
+              function initHieroJax() {
+                console.log('Initializing HieroJax...');
                 if (window.hierojax) {
                   console.log('HieroJax found, processing fragments...');
                   try {
@@ -60,17 +61,22 @@ export default function RootLayout({
                     console.error('HieroJax processing error:', error);
                   }
                 } else {
-                  console.error('HieroJax not found!');
+                  console.log('HieroJax not found yet, retrying...');
+                  // Повторяем попытку через 100ms
+                  setTimeout(initHieroJax, 100);
                 }
-              });
+              }
 
-              // Fallback: check again after a delay
-              setTimeout(() => {
+              // Запускаем инициализацию после загрузки DOM
+              window.addEventListener("DOMContentLoaded", initHieroJax);
+
+              // Дополнительная проверка после полной загрузки страницы
+              window.addEventListener("load", () => {
+                console.log('Page fully loaded, final HieroJax check...');
                 if (window.hierojax) {
-                  console.log('HieroJax fallback processing...');
                   window.hierojax.processFragments();
                 }
-              }, 1000);
+              });
             `,
           }}
         />
