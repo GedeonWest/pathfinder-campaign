@@ -27,7 +27,7 @@ export default function CharactersPage() {
             <div className="w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
           </div>
           <p className="text-xl text-foreground/90 max-w-3xl mx-auto font-serif">
-            Герои кампании "Маски Мумии" - отважные искатели приключений, исследующие древние тайны
+            Герои кампании "Mummy's Mask" - отважные искатели приключений, исследующие древние тайны
           </p>
         </div>
 

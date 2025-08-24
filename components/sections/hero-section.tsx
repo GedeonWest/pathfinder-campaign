@@ -39,7 +39,7 @@ export function HeroSection({ onExploreClick }: HeroSectionProps) {
 
           <Stack spacing="lg" align="center">
             <Typography variant="h1" as="h1">
-              Маски Мумии
+              Mummy's Mask
             </Typography>
             <Typography variant="h2" as="h2" size="2xl">
               Кампания

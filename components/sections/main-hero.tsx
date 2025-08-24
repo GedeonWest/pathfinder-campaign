@@ -30,7 +30,7 @@ export function MainHero({ onExploreClick }: MainHeroProps) {
           <img src='/logo.png' className="w-64 h-64 mx-auto text-primary mb-0" style={{ filter: 'drop-shadow(0 0 10px oklch(85.2% 0.199 91.936)) !important' }} />
         </div>
 
-        <h1 className="font-serif text-5xl md:text-7xl font-bold text-primary mb-4 tracking-wide">Маски Мумии</h1>
+        <h1 className="font-serif text-5xl md:text-7xl font-bold text-primary mb-4 tracking-wide">Mummy's Mask</h1>
         <h2 className="font-serif text-xl md:text-3xl text-primary/90 mb-8">Здесь будет имя пачки</h2>
 
         {/* Анимированные иероглифы */}

@@ -1,11 +1,17 @@
-"use client"
-
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Download, Coins, Crown } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { getCharacterById } from "@/lib/characters"
+import { getCharacterById, getAllCharacters } from "@/lib/characters"
+
+// Генерируем статические параметры для всех персонажей
+export async function generateStaticParams() {
+  const characters = getAllCharacters()
+  return characters.map((character) => ({
+    id: character.id,
+  }))
+}
 
 export default function CharacterDetailPage({ params }: { params: { id: string } }) {
   const character = getCharacterById(params.id)

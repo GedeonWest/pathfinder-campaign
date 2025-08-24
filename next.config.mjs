@@ -9,6 +9,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  output: 'export',
+  trailingSlash: true,
+  basePath: process.env.NODE_ENV === 'production' ? '/pathfinder-campaign' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/pathfinder-campaign' : '',
 }
 
 export default nextConfig

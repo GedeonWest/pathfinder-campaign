@@ -21,7 +21,7 @@ export default function AdventureLogPage() {
             <div className="w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
           </div>
           <p className="text-lg text-foreground/90 max-w-2xl mx-auto font-serif">
-            Хронология эпических событий кампании "Маски Мумии"
+            Хронология эпических событий кампании "Mummy's Mask"
           </p>
         </div>
 

@@ -20,7 +20,7 @@ export default function Header() {
           <Flex align="center" gap="none">
             <img src='/logo.png' className="w-12 h-12 mx-auto text-primary mb-0 mr-2" style={{ filter: 'drop-shadow(0 0 10px oklch(85.2% 0.199 91.936)) !important' }} />
             <Link href="/" variant="primary" size="lg" className="font-serif font-bold">
-              Маски Мумии
+              Mummy's Mask
             </Link>
           </Flex>
 
