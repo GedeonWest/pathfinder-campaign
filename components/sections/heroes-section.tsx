@@ -7,6 +7,7 @@ import { HeroCard } from "@/components/ui/hero-card"
 import { Button } from "@/components/ui/button"
 import { Link } from "@/components/ui/link"
 import { AnkhIcon } from "@/components/ui/icon"
+import { ROUTES } from "@/lib/routes"
 
 const heroes = [
   {
@@ -53,7 +54,7 @@ export function HeroesSection() {
 
       <div className="text-center">
         <Button variant="outline" className="border-primary/40 text-primary hover:bg-primary/10 bg-transparent">
-          <Link href="/characters" className="flex items-center">
+          <Link href={ROUTES.CHARACTERS} className="flex items-center">
             Посмотреть всех персонажей
             <AnkhIcon size="sm" className="ml-2" />
           </Link>

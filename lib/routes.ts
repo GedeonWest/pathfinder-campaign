@@ -2,14 +2,14 @@
 export const ROUTES = {
   // Основные страницы
   HOME: '/',
-  CHARACTERS: '/characters',
-  STATISTICS: '/statistics',
-  ADVENTURE_LOG: '/adventure-log',
-  MATERIALS: '/materials',
-  TEST_HIEROJAX: '/test-hierojax',
+  CHARACTERS: '/characters/',
+  STATISTICS: '/statistics/',
+  ADVENTURE_LOG: '/adventure-log/',
+  MATERIALS: '/materials/',
+  TEST_HIEROJAX: '/test-hierojax/',
 
   // Динамические маршруты
-  CHARACTER_DETAIL: (id: string) => `/characters/${id}`,
+  CHARACTER_DETAIL: (id: string) => `/characters/${id}/`,
 
   // API маршруты (если понадобятся в будущем)
   API_CHARACTERS: '/api/characters',

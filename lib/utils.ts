@@ -32,8 +32,10 @@ export function getImagePath(src: string) {
   if (src.startsWith('/')) {
     return '/pathfinder-campaign' + src
   }
-  // Если src не начинается с /, это относительный путь, возвращаем как есть
-  return src
+  // В остальных случаях (относительный путь/имя файла),
+  // считаем, что ресурс лежит в корне public и добавляем basePath
+  // чтобы путь был стабильным на вложенных страницах
+  return '/pathfinder-campaign/' + src.replace(/^\.\//, '')
 }
 
 // Функция для получения полного URL с basePath

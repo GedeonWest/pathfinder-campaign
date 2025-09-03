@@ -11,6 +11,7 @@ import { StatCard } from "@/components/ui/stat-card"
 import { HeroCard } from "@/components/ui/hero-card"
 import { Link } from "@/components/ui/link"
 import { PyramidIcon, AnkhIcon } from "@/components/ui/icon"
+import { ROUTES } from "@/lib/routes"
 
 export function TestComponents() {
   return (
@@ -90,13 +91,13 @@ export function TestComponents() {
         </Grid>
 
         <Flex gap="md" wrap="wrap" justify="center">
-          <Link href="/" variant="primary">
+          <Link href={ROUTES.HOME} variant="primary">
             Главная
           </Link>
-          <Link href="/characters" variant="default">
+          <Link href={ROUTES.CHARACTERS} variant="default">
             Персонажи
           </Link>
-          <Link href="/statistics" variant="accent">
+          <Link href={ROUTES.STATISTICS} variant="accent">
             Статистика
           </Link>
         </Flex>

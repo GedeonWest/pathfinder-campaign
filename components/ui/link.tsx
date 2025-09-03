@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils"
 import { forwardRef } from "react"
+import NextLink from "next/link"
 
 export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode
@@ -38,25 +39,25 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   }, ref) => {
     const isExternal = external || href.startsWith('http') || href.startsWith('mailto:')
 
-    return (
-      <a
-        ref={ref}
-        href={href}
-        className={cn(
-          linkVariants[variant],
-          linkSizes[size],
-          underline && "underline underline-offset-4",
-          "font-medium font-sans",
-          className
-        )}
-        {...(isExternal && {
-          target: "_blank",
-          rel: "noopener noreferrer",
-        })}
-        {...props}
-      >
-        {children}
-        {isExternal && (
+    const classes = cn(
+      linkVariants[variant],
+      linkSizes[size],
+      underline && "underline underline-offset-4",
+      "font-medium font-sans",
+      className
+    )
+
+    if (isExternal) {
+      return (
+        <a
+          ref={ref}
+          href={href}
+          className={classes}
+          target="_blank"
+          rel="noopener noreferrer"
+          {...props}
+        >
+          {children}
           <svg
             className="inline-block w-3 h-3 ml-1"
             fill="none"
@@ -70,8 +71,19 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
               d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
             />
           </svg>
-        )}
-      </a>
+        </a>
+      )
+    }
+
+    return (
+      <NextLink
+        href={href}
+        ref={ref as any}
+        className={classes}
+        {...props}
+      >
+        {children}
+      </NextLink>
     )
   }
 )
