@@ -44,17 +44,10 @@ export function CampaignMap() {
       <Modal isOpen={isMapModalOpen} onClose={() => setIsMapModalOpen(false)}>
         <ModalContent className="w-full max-w-6xl">
           <ModalHeader onClose={() => setIsMapModalOpen(false)}>
-            Карта древних земель Вати
+            Карта земель Вати
           </ModalHeader>
           <ModalBody className="p-0">
             <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden border border-primary/30 shadow-2xl">
-              <img
-                src={getImagePath("/map.png")}
-                alt="Карта кампании"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden border border-primary/30 shadow-xl">
               <img
                 src={getImagePath("/map.png")}
                 alt="Карта кампании"
