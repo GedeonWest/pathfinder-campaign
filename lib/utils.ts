@@ -17,11 +17,8 @@ export function getLink(href: string) {
   if (href.startsWith('/pathfinder-campaign')) {
     return href
   }
-  // Если href начинается с /, добавляем basePath
-  if (href.startsWith('/')) {
-    return '/pathfinder-campaign' + href
-  }
-  // Если href не начинается с /, это относительный путь, возвращаем как есть
+  // Для внутренних ссылок Next.js автоматически добавляет basePath
+  // Поэтому просто возвращаем href как есть
   return href
 }
 
