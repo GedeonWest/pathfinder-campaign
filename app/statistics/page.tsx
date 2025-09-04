@@ -1,11 +1,27 @@
 "use client"
 
-import { getGeneralStats, getSessionStats } from "@/lib/statistics"
+import { fetchGeneralStats, fetchSessionStats } from "@/lib/statistics"
 import { GeneralStatsComponent, SessionStatsComponent } from "@/components/statistics"
+import { useEffect, useState } from "react"
 
 export default function StatisticsPage() {
-  const generalStats = getGeneralStats()
-  const sessionStats = getSessionStats()
+  const [generalStats, setGeneralStats] = useState<any>(null)
+  const [sessionStats, setSessionStats] = useState<any[]>([])
+
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const [g, s] = await Promise.all([
+          fetchGeneralStats(),
+          fetchSessionStats(),
+        ])
+        setGeneralStats(g)
+        setSessionStats(s)
+      } catch (e) {
+        // no-op
+      }
+    })()
+  }, [])
 
   return (
     <div className="min-h-screen marble-bg">
@@ -28,7 +44,7 @@ export default function StatisticsPage() {
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-8 text-center">
             Общая статистика
           </h2>
-          <GeneralStatsComponent stats={generalStats} />
+          {generalStats && <GeneralStatsComponent stats={generalStats} />}
         </div>
       </section>
 

@@ -5,11 +5,13 @@ import { Crown } from "lucide-react"
 import Link from "next/link"
 import { getLink, getImagePath } from "@/lib/utils"
 import Masonry from "react-masonry-css"
-import { getAllCharacters } from "@/lib/characters"
+import { fetchAllCharacters } from "@/lib/characters"
 import { HeroesIcon } from "../ui/icons/heroes"
 import { ROUTES } from "@/lib/routes"
+import { useEffect, useState } from "react"
+import type { CharacterWithIcon } from "@/types/characters"
 
-const characters = getAllCharacters()
+const initialCharacters: CharacterWithIcon[] = []
 
 // Breakpoints для masonry
 const breakpointColumns = {
@@ -20,6 +22,19 @@ const breakpointColumns = {
 }
 
 export function CampaignHeroes() {
+  const [characters, setCharacters] = useState<CharacterWithIcon[]>(initialCharacters)
+
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const all = await fetchAllCharacters()
+        setCharacters(all)
+      } catch (e) {
+        // no-op for GH Pages
+      }
+    })()
+  }, [])
+
   return (
     <div>
       <div className="text-center mb-16">

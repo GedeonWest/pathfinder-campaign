@@ -1,12 +1,23 @@
 "use client"
 
-import { useState } from "react"
-import { getAllJournalEntries } from "@/lib/journal"
+import { useEffect, useState } from "react"
+import { fetchAllJournalEntries } from "@/lib/journal"
 import { JournalList, Timeline } from "@/components/journal"
 
 export default function AdventureLogPage() {
   const [expandedEntry, setExpandedEntry] = useState<number | null>(null)
-  const journalEntries = getAllJournalEntries()
+  const [journalEntries, setJournalEntries] = useState([])
+
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const data = await fetchAllJournalEntries()
+        setJournalEntries(data as any)
+      } catch (e) {
+        // no-op
+      }
+    })()
+  }, [])
 
   const toggleEntry = (id: number) => {
     setExpandedEntry(expandedEntry === id ? null : id)

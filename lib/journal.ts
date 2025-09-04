@@ -1,14 +1,26 @@
-import journalData from '@/data/journal.json'
 import { JournalEntry } from '@/types/journal'
+import { fetchSheet } from './google-sheets'
 
-export function getAllJournalEntries(): JournalEntry[] {
-  return journalData.journalEntries
+export async function fetchAllJournalEntries(): Promise<JournalEntry[]> {
+  const rows = await fetchSheet('Journal!A1:Z')
+  return rows.map((row) => ({
+    id: Number(row.id) || 0,
+    title: row.title,
+    date: row.date,
+    location: row.location,
+    session: Number(row.session) || 0,
+    type: row.type,
+    summary: row.summary,
+    content: row.content,
+  }))
 }
 
-export function getJournalEntryById(id: number): JournalEntry | undefined {
-  return journalData.journalEntries.find(entry => entry.id === id)
+export async function fetchJournalEntryById(id: number): Promise<JournalEntry | undefined> {
+  const all = await fetchAllJournalEntries()
+  return all.find((e) => e.id === id)
 }
 
-export function getJournalEntriesByType(type: string): JournalEntry[] {
-  return journalData.journalEntries.filter(entry => entry.type === type)
+export async function fetchJournalEntriesByType(type: string): Promise<JournalEntry[]> {
+  const all = await fetchAllJournalEntries()
+  return all.filter((e) => e.type === type)
 }

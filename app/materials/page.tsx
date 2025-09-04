@@ -9,7 +9,7 @@ import {
   MaterialModal,
   MaterialsCounter
 } from "@/components/materials"
-import { getMaterials, filterMaterials, getUniqueLocations, getUniqueSessions, getCollectionStats, sortMaterials } from "@/lib/materials"
+import { fetchMaterials, filterMaterials, getUniqueLocations, getUniqueSessions, getCollectionStats, sortMaterials } from "@/lib/materials"
 import type { Material, MaterialFilter } from "@/types/materials"
 
 export default function MaterialsPage() {
@@ -29,12 +29,18 @@ export default function MaterialsPage() {
   const [stats, setStats] = useState({ total: 0, collected: 0, uncollected: 0 })
 
   useEffect(() => {
-    const allMaterials = getMaterials()
-    setMaterials(allMaterials)
-    setFilteredMaterials(allMaterials)
-    setLocations(getUniqueLocations(allMaterials))
-    setSessions(getUniqueSessions(allMaterials))
-    setStats(getCollectionStats(allMaterials))
+    ;(async () => {
+      try {
+        const allMaterials = await fetchMaterials()
+        setMaterials(allMaterials)
+        setFilteredMaterials(allMaterials)
+        setLocations(getUniqueLocations(allMaterials))
+        setSessions(getUniqueSessions(allMaterials))
+        setStats(getCollectionStats(allMaterials))
+      } catch (e) {
+        // no-op for GH Pages
+      }
+    })()
   }, [])
 
   useEffect(() => {

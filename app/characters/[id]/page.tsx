@@ -1,26 +1,27 @@
+// Server component with static params for export
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Download, Coins, Crown } from "lucide-react"
 import Link from "next/link"
-import { notFound } from "next/navigation"
-import { getCharacterById, getAllCharacters } from "@/lib/characters"
+import { fetchCharacterById, fetchAllCharacters } from "@/lib/characters"
 import { getLink, getImagePath } from "@/lib/utils"
 import { ROUTES } from "@/lib/routes"
 
 // Генерируем статические параметры для всех персонажей
 export async function generateStaticParams() {
-  const characters = getAllCharacters()
-  return characters.map((character) => ({
-    id: character.id,
-  }))
+  // For export, we cannot call external APIs at build on GH Pages infra, but local build supports it.
+  try {
+    const characters = await fetchAllCharacters()
+    return characters.map((c) => ({ id: c.id }))
+  } catch {
+    return []
+  }
 }
 
-export default function CharacterDetailPage({ params }: { params: { id: string } }) {
-  const character = getCharacterById(params.id)
+export default async function CharacterDetailPage({ params }: { params: { id: string } }) {
+  const character = await fetchCharacterById(params.id)
 
-  if (!character) {
-    notFound()
-  }
+  if (!character) return null
 
   return (
     <div className="min-h-screen marble-bg">
@@ -46,7 +47,7 @@ export default function CharacterDetailPage({ params }: { params: { id: string }
           <img
             src={character.image ? getImagePath(character.image) : getImagePath("./placeholder.svg")}
             alt={character.name}
-            className="w-full h-full object-cover rounded-t-full"
+            className="w-full h-full object-cover"
           />
           {/* Затемнение для читаемости текста */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>

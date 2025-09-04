@@ -1,12 +1,26 @@
-import materialsData from '@/data/materials.json'
 import type { Material, MaterialFilter } from '@/types/materials'
+import { fetchSheet, toArray, toBoolean } from './google-sheets'
 
-export function getMaterials(): Material[] {
-  return materialsData.materials
+export async function fetchMaterials(): Promise<Material[]> {
+  const rows = await fetchSheet('Materials!A1:Z')
+  return rows.map((row) => ({
+    id: row.id,
+    name: row.name,
+    type: row.type,
+    description: row.description,
+    imageUrl: row.imageUrl,
+    location: row.location,
+    dateFound: row.dateFound,
+    tags: toArray(row.tags),
+    isCollected: toBoolean(row.isCollected),
+    collectedBy: row.collectedBy,
+    sessionFound: row.sessionFound,
+  }))
 }
 
-export function getMaterialById(id: string): Material | undefined {
-  return materialsData.materials.find(material => material.id === id)
+export async function fetchMaterialById(id: string): Promise<Material | undefined> {
+  const all = await fetchMaterials()
+  return all.find((m) => m.id === id)
 }
 
 export function filterMaterials(materials: Material[], filters: MaterialFilter): Material[] {

@@ -3,11 +3,29 @@
 import { Crown } from "lucide-react"
 import Masonry from "react-masonry-css"
 import { CharacterCard, CharacterCardBW } from "@/components/characters"
-import { getAllCharacters, getCharactersBW } from "@/lib/characters"
+import { fetchAllCharacters, fetchCharactersBW } from "@/lib/characters"
 import type { CharacterWithIcon, CharacterBWWithIcon } from "@/types/characters"
+import { useEffect, useState } from "react"
 
-const characters: CharacterWithIcon[] = getAllCharacters()
-const charactersBW: CharacterBWWithIcon[] = getCharactersBW()
+export default function CharactersPage() {
+  const [characters, setCharacters] = useState<CharacterWithIcon[]>([])
+  const [charactersBW, setCharactersBW] = useState<CharacterBWWithIcon[]>([])
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const [all, bw] = await Promise.all([
+          fetchAllCharacters(),
+          fetchCharactersBW(),
+        ])
+        setCharacters(all)
+        setCharactersBW(bw)
+      } catch (e) {
+        // no-op on client for GH Pages
+      }
+    }
+    load()
+  }, [])
 
 // Breakpoints для masonry
 const breakpointColumns = {
@@ -17,7 +35,6 @@ const breakpointColumns = {
   500: 1
 }
 
-export default function CharactersPage() {
   return (
     <div className="min-h-screen marble-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
