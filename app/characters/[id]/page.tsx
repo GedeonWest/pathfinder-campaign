@@ -27,7 +27,17 @@ export async function generateStaticParams() {
 }
 
 export default async function CharacterDetailPage({ params }: { params: { id: string } }) {
-  const character = await fetchCharacterById(params.id)
+  let character = null as any
+  try {
+    character = await fetchCharacterById(params.id)
+  } catch {
+    // If sheets are not configured on CI, fallback to local JSON data for prerender
+    try {
+      const local = await import('@/data/characters.json')
+      const arr = (local as any).default?.characters || (local as any).characters || []
+      character = arr.find((c: any) => c.id === params.id) || null
+    } catch {}
+  }
 
   if (!character) return null
 

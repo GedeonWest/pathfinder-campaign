@@ -5,6 +5,10 @@ export interface SheetRowObject {
 const SPREADSHEET_ID = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID as string
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY as string
 
+export function isSheetsConfigured(): boolean {
+  return Boolean(SPREADSHEET_ID && API_KEY)
+}
+
 function getSheetsApiUrl(range: string): string {
   if (!SPREADSHEET_ID || !API_KEY) {
     throw new Error('Google Sheets API: missing NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID or NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY')
