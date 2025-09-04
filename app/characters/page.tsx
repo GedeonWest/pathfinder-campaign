@@ -119,6 +119,22 @@ const breakpointColumns = {
                         <p key={i} className="text-foreground/90 leading-relaxed mb-4 font-serif text-base md:text-lg">{p}</p>
                       ))}
                     </div>
+                    <div className="mt-6 pt-6 border-t border-primary/20">
+                      {active.pdf ? (
+                        <a
+                          href={active.pdf}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-3 rounded-md text-base"
+                        >
+                          Скачать лист персонажа (PDF)
+                        </a>
+                      ) : (
+                        <button className="bg-primary/50 cursor-not-allowed text-primary-foreground/80 font-semibold px-6 py-3 rounded-md text-base">
+                          PDF недоступен
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

@@ -87,7 +87,7 @@ interface ModalBodyProps {
 
 export function ModalBody({ children, className }: ModalBodyProps) {
   return (
-    <div className={cn("p-4", className)}>
+    <div className={cn("p-4 overflow-y-auto max-h-[calc(90vh-64px)]", className)}>
       {children}
     </div>
   )

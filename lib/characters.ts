@@ -25,6 +25,7 @@ export async function fetchAllCharacters(): Promise<CharacterWithIcon[]> {
       color: row.color,
       gold: toNumber(row.gold),
       backstory: row.backstory,
+      pdf: row.pdf,
     }
     return {
       ...base,

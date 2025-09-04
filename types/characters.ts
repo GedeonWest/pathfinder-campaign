@@ -11,6 +11,7 @@ export interface Character {
   color: string
   gold: number
   backstory: string
+  pdf?: string
 }
 
 export interface CharacterBW {
@@ -35,6 +36,7 @@ export interface CharacterWithIcon {
   color: string
   gold: number
   backstory: string
+  pdf?: string
 }
 
 export interface CharacterBWWithIcon {
