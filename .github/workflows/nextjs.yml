@@ -98,6 +98,37 @@ jobs:
               fi
             done
           fi
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Generate placeholders for dynamic character routes from Google Sheets (shell)
+        env:
+          NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY }}
+          NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID }}
+        run: |
+          set -e
+          if [ -z "$NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY" ] || [ -z "$NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID" ]; then
+            echo "Sheets env missing, skipping placeholders"
+            exit 0
+          fi
+          ENC_RANGE="Characters%21A1%3AZ"
+          URL="https://sheets.googleapis.com/v4/spreadsheets/${NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID}/values/${ENC_RANGE}?key=${NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY}"
+          RESP="$(curl -sS "$URL")"
+          IDS="$(echo "$RESP" | jq -r '(.values[0] // []) as $h | ($h | index("id")) as $i | if $i==null then [] else (.values[1:] | map(select(length > $i) | .[$i]) ) end | .[]' || true)"
+          CHAR_DIR="out/pathfinder-campaign/characters"
+          SRC_HTML="out/index.html"
+          if [ ! -f "$SRC_HTML" ]; then
+            if [ -f "out/pathfinder-campaign/index.html" ]; then SRC_HTML="out/pathfinder-campaign/index.html"; else echo "No index html found, skipping"; exit 0; fi
+          fi
+          mkdir -p "$CHAR_DIR"
+          count=0
+          while IFS= read -r id; do
+            [ -z "$id" ] && continue
+            mkdir -p "$CHAR_DIR/$id"
+            cp "$SRC_HTML" "$CHAR_DIR/$id/index.html"
+            cp "$SRC_HTML" "$CHAR_DIR/$id.html"
+            count=$((count+1))
+          done <<< "$IDS"
+          echo "Generated $count placeholders"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
