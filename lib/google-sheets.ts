@@ -18,9 +18,34 @@ function getSheetsApiUrl(range: string): string {
 }
 
 export async function fetchSheet(range: string): Promise<SheetRowObject[]> {
+  const isClient = typeof window !== 'undefined'
+  const hasId = Boolean(SPREADSHEET_ID)
+  const hasKey = Boolean(API_KEY)
+
+  // Диагностика отсутствующих переменных на клиенте: не кидаем исключение, чтобы не ломать UI
+  if (!hasId || !hasKey) {
+    const msg = 'Google Sheets API: missing NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID or NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY'
+    if (isClient) {
+      // На клиенте просто логируем и возвращаем пусто, чтобы было видно в консоли, почему не ушёл запрос
+      // (Запрос не уходит потому что без ключа/ID нельзя сформировать URL)
+      // Спрятали ключ; выводим только наличие и длину
+      // eslint-disable-next-line no-console
+      console.warn('[Sheets][client] Missing config; skip fetch', { range, hasId, hasKey })
+      return []
+    }
+    // На сервере пусть продолжит стандартным поведением (будет пойман вызывающим кодом)
+    throw new Error(msg)
+  }
+
+  // Лог старта запроса (без утечки ключа)
+  // eslint-disable-next-line no-console
+  if (isClient) console.log('[Sheets] fetch start', { range })
+
   const url = getSheetsApiUrl(range)
   const res = await fetch(url, { cache: 'no-store' })
   if (!res.ok) {
+    // eslint-disable-next-line no-console
+    if (isClient) console.error('[Sheets] HTTP error', { range, status: res.status, statusText: res.statusText })
     throw new Error(`Google Sheets API error for range ${range}: ${res.status} ${res.statusText}`)
   }
   const data: { values?: string[][] } = await res.json()

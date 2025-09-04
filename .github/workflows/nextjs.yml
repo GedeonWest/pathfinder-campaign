@@ -61,6 +61,10 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
+      - name: Create env file
+        run: |
+          echo "NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY=${{ secrets.NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY }}" >> .env.local
+          echo "NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID }}" >> .env.local
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -74,6 +78,9 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
+        env:
+          NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY }}
+          NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

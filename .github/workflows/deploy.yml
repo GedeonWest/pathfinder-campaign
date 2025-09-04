@@ -30,6 +30,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify env
+        run: |
+          test -f .env.local && echo ".env.local present"
+          echo "KEY_LEN=${#NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY}"
+          echo "ID_LEN=${#NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID}"
+        env:
+          NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY }}
+          NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID }}
+
       - name: Build with Next.js
         run: npm run build
         env:
