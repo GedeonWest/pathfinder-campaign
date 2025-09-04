@@ -10,20 +10,18 @@ import { ROUTES } from "@/lib/routes"
 
 // Генерируем статические параметры для всех персонажей
 export async function generateStaticParams() {
-  // For export, we cannot call external APIs at build on GH Pages infra, but local build supports it.
+  // Union: Google Sheets (if доступно) + локальный JSON (гарантированный fallback)
+  const ids = new Set<string>()
   try {
     const characters = await fetchAllCharacters()
-    return characters.map((c) => ({ id: c.id }))
-  } catch {
-    // Fallback to local JSON just for path generation if Google Sheets is unavailable at build time
-    try {
-      const local = await import('@/data/characters.json')
-      const arr = (local as any).default?.characters || (local as any).characters || []
-      return arr.map((c: any) => ({ id: c.id }))
-    } catch {
-      return []
-    }
-  }
+    characters.forEach((c) => ids.add(c.id))
+  } catch {}
+  try {
+    const local = await import('@/data/characters.json')
+    const arr = (local as any).default?.characters || (local as any).characters || []
+    arr.forEach((c: any) => ids.add(c.id))
+  } catch {}
+  return Array.from(ids).map((id) => ({ id }))
 }
 
 export default async function CharacterDetailPage({ params }: { params: { id: string } }) {

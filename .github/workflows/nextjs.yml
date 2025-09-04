@@ -82,6 +82,11 @@ jobs:
           NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY }}
           NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+      - name: Add 404 fallback for GitHub Pages deep links
+        run: |
+          if [ -f "out/pathfinder-campaign/index.html" ]; then
+            cp out/pathfinder-campaign/index.html out/404.html
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
