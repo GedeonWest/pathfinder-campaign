@@ -1,9 +1,7 @@
 "use client"
 
 import { LucideIcon } from "lucide-react"
-import Link from "next/link"
-import { getLink, getImagePath } from "@/lib/utils"
-import { ROUTES } from "@/lib/routes"
+import { getImagePath } from "@/lib/utils"
 
 export interface CharacterBW {
   id: string
@@ -16,17 +14,18 @@ export interface CharacterBW {
 interface CharacterCardBWProps {
   character: CharacterBW
   index: number
+  onOpen?: (character: CharacterBW) => void
 }
 
-export function CharacterCardBW({ character, index }: CharacterCardBWProps) {
+export function CharacterCardBW({ character, index, onOpen }: CharacterCardBWProps) {
   const IconComponent = character.classIcon
 
   return (
     <div
     className="character-card animate-fade-in-up group"
     style={{ animationDelay: `${index * 0.2}s` }}
+  onClick={() => onOpen?.(character)}
   >
-    <Link  href={getLink(ROUTES.CHARACTER_DETAIL(character.id.replace('-bw', '')))} className="block">
       <div className="relative overflow-hidden rounded-lg cursor-pointer">
         {/* Изображение персонажа */}
         <div className="w-full h-[450px] relative">
@@ -50,7 +49,7 @@ export function CharacterCardBW({ character, index }: CharacterCardBWProps) {
           </div>
         </div>
       </div>
-    </Link>
+
   </div>
   )
 }

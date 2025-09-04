@@ -4,9 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { LucideIcon } from "lucide-react"
-import Link from "next/link"
-import { getLink, getImagePath } from "@/lib/utils"
-import { ROUTES } from "@/lib/routes"
+import { getImagePath } from "@/lib/utils"
 
 export interface Character {
   id: string
@@ -23,9 +21,10 @@ export interface Character {
 interface CharacterCardProps {
   character: Character
   index: number
+  onOpen?: (character: Character) => void
 }
 
-export function CharacterCard({ character, index }: CharacterCardProps) {
+export function CharacterCard({ character, index, onOpen }: CharacterCardProps) {
   const IconComponent = character.classIcon
 
   return (
@@ -69,11 +68,11 @@ export function CharacterCard({ character, index }: CharacterCardProps) {
           </CardDescription>
 
           <Button
-            asChild
+            onClick={() => onOpen?.(character)}
             variant="outline"
             className="w-full border-primary/50 text-primary hover:bg-primary/10 bg-transparent"
           >
-            <Link href={getLink(ROUTES.CHARACTER_DETAIL(character.id))}>Подробнее</Link>
+            Подробнее
           </Button>
         </CardContent>
       </Card>

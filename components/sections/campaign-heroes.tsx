@@ -24,6 +24,7 @@ const breakpointColumns = {
 
 export function CampaignHeroes() {
   const [characters, setCharacters] = useState<CharacterWithIcon[]>(initialCharacters)
+  const [active, setActive] = useState<CharacterWithIcon | null>(null)
 
   useEffect(() => {
     ;(async () => {
@@ -64,9 +65,10 @@ export function CampaignHeroes() {
         {characters.map((character, index) => (
           <Link
             key={character.id}
-            href={getLink(ROUTES.CHARACTER_DETAIL(character.id))}
+            href={getLink(ROUTES.CHARACTERS)}
             className="block mb-6 animate-fade-in-up group cursor-pointer"
             style={{ animationDelay: `${index * 0.1}s` }}
+            onClick={(e) => { e.preventDefault(); setActive(character) }}
           >
             <div className="text-center hover:scale-105 transition-transform duration-300">
               {/* Изображение в арке */}
@@ -107,6 +109,9 @@ export function CampaignHeroes() {
           </Link>
         </Button>
       </div>
+
+      {/* Modal proxy via URL-less modal handled at /characters page */}
+      {active && null}
     </div>
   )
 }
