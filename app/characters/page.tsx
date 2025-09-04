@@ -6,6 +6,7 @@ import { CharacterCard, CharacterCardBW } from "@/components/characters"
 import { fetchAllCharacters, fetchCharactersBW } from "@/lib/characters"
 import type { CharacterWithIcon, CharacterBWWithIcon } from "@/types/characters"
 import { useEffect, useState } from "react"
+import { HieroglyphCycler } from "@/components/ui"
 
 export default function CharactersPage() {
   const [characters, setCharacters] = useState<CharacterWithIcon[]>([])
@@ -37,6 +38,11 @@ const breakpointColumns = {
 
   return (
     <div className="min-h-screen marble-bg">
+      {characters.length === 0 && (
+        <div className="flex items-center justify-center py-16">
+          <HieroglyphCycler size="lg" />
+        </div>
+      )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-16 animate-fade-in-up">
           <h1 className="font-serif text-5xl md:text-6xl font-bold text-primary mb-4 tracking-wider">ПЕРСОНАЖИ</h1>

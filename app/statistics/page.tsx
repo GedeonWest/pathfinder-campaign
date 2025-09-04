@@ -3,6 +3,7 @@
 import { fetchGeneralStats, fetchSessionStats } from "@/lib/statistics"
 import { GeneralStatsComponent, SessionStatsComponent } from "@/components/statistics"
 import { useEffect, useState } from "react"
+import { HieroglyphCycler } from "@/components/ui"
 
 export default function StatisticsPage() {
   const [generalStats, setGeneralStats] = useState<any>(null)
@@ -44,6 +45,11 @@ export default function StatisticsPage() {
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-8 text-center">
             Общая статистика
           </h2>
+          {!generalStats && (
+            <div className="flex items-center justify-center py-8">
+              <HieroglyphCycler />
+            </div>
+          )}
           {generalStats && <GeneralStatsComponent stats={generalStats} />}
         </div>
       </section>
@@ -54,6 +60,11 @@ export default function StatisticsPage() {
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-8 text-center">
             Хроники сессий
           </h2>
+          {sessionStats.length === 0 && (
+            <div className="flex items-center justify-center py-6">
+              <HieroglyphCycler />
+            </div>
+          )}
           <SessionStatsComponent stats={sessionStats} />
         </div>
       </section>

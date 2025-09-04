@@ -11,6 +11,7 @@ import {
 } from "@/components/materials"
 import { fetchMaterials, filterMaterials, getUniqueLocations, getUniqueSessions, getCollectionStats, sortMaterials } from "@/lib/materials"
 import type { Material, MaterialFilter } from "@/types/materials"
+import { HieroglyphCycler } from "@/components/ui"
 
 export default function MaterialsPage() {
   const [materials, setMaterials] = useState<Material[]>([])
@@ -77,6 +78,11 @@ export default function MaterialsPage() {
   return (
     <div className="min-h-screen marble-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {materials.length === 0 && (
+          <div className="flex items-center justify-center py-8">
+            <HieroglyphCycler size="lg" />
+          </div>
+        )}
         <MaterialsHeader />
 
         <MaterialsStats materials={materials} stats={stats} />

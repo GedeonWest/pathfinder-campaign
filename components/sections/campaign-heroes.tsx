@@ -10,6 +10,7 @@ import { HeroesIcon } from "../ui/icons/heroes"
 import { ROUTES } from "@/lib/routes"
 import { useEffect, useState } from "react"
 import type { CharacterWithIcon } from "@/types/characters"
+import { HieroglyphCycler } from "@/components/ui"
 
 const initialCharacters: CharacterWithIcon[] = []
 
@@ -37,6 +38,11 @@ export function CampaignHeroes() {
 
   return (
     <div>
+      {characters.length === 0 && (
+        <div className="flex items-center justify-center py-8">
+          <HieroglyphCycler />
+        </div>
+      )}
       <div className="text-center mb-16">
         <div className="flex justify-center mb-6">
           <HeroesIcon classNames="w-16 h-16 text-primary animate-glow-pulse" />

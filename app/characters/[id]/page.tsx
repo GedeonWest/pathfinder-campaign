@@ -1,4 +1,5 @@
 // Server component with static params for export
+export const dynamicParams = false
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Download, Coins, Crown } from "lucide-react"
@@ -14,7 +15,14 @@ export async function generateStaticParams() {
     const characters = await fetchAllCharacters()
     return characters.map((c) => ({ id: c.id }))
   } catch {
-    return []
+    // Fallback to local JSON just for path generation if Google Sheets is unavailable at build time
+    try {
+      const local = await import('@/data/characters.json')
+      const arr = (local as any).default?.characters || (local as any).characters || []
+      return arr.map((c: any) => ({ id: c.id }))
+    } catch {
+      return []
+    }
   }
 }
 

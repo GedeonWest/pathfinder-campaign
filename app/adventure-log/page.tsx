@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { fetchAllJournalEntries } from "@/lib/journal"
+import { HieroglyphCycler } from "@/components/ui"
 import { JournalList, Timeline } from "@/components/journal"
 
 export default function AdventureLogPage() {
@@ -26,6 +27,11 @@ export default function AdventureLogPage() {
   return (
     <div className="min-h-screen marble-bg">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {journalEntries.length === 0 && (
+          <div className="flex items-center justify-center py-6">
+            <HieroglyphCycler />
+          </div>
+        )}
         <div className="text-center mb-16 animate-fade-in-up">
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-primary mb-4">Дневник приключений</h1>
           <div className="flex justify-center mb-6">

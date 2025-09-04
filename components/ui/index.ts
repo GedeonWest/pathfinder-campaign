@@ -26,6 +26,7 @@ export { Modal, ModalContent, ModalHeader, ModalBody } from "./modal"
 
 // Hieroglyphs components
 export { Hieroglyphs } from "./hieroglyphs"
+export { HieroglyphCycler } from "./hieroglyph-cycler"
 export {
   EgyptianHieroglyphs,
   AnkhSymbol,
