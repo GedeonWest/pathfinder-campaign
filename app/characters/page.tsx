@@ -42,11 +42,6 @@ const breakpointColumns = {
 
   return (
     <div className="min-h-screen marble-bg">
-      {characters.length === 0 && (
-        <div className="flex items-center justify-center py-16">
-          <HieroglyphCycler size="lg" />
-        </div>
-      )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-16 animate-fade-in-up">
           <h1 className="font-serif text-5xl md:text-6xl font-bold text-primary mb-4 tracking-wider">ПЕРСОНАЖИ</h1>
@@ -61,17 +56,23 @@ const breakpointColumns = {
 
 
         {/* Второй блок - черно-белые карточки в шахматном порядке */}
-        <section className="z-30 relative">
-          <div className="chessboard-grid">
-            {charactersBW.map((character, index) => (
-              <div key={character.id} className="character-card">
-                <CharacterCardBW character={character} index={index} onOpen={(c) => {
-                  const full = characters.find(ch => ch.id === c.id) || null
-                  setActive(full)
-                }} />
-              </div>
-            ))}
-          </div>
+        <section className="z-30 relative min-h-[200px]">
+          {charactersBW.length === 0 ? (
+            <div className="flex items-center justify-center py-16">
+              <HieroglyphCycler size="lg" />
+            </div>
+          ) : (
+            <div className="chessboard-grid">
+              {charactersBW.map((character, index) => (
+                <div key={character.id} className="character-card">
+                  <CharacterCardBW character={character} index={index} onOpen={(c) => {
+                    const full = characters.find(ch => ch.id === c.id) || null
+                    setActive(full)
+                  }} />
+                </div>
+              ))}
+            </div>
+          )}
         </section>
       </div>
 

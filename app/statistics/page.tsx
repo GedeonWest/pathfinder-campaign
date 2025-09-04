@@ -46,9 +46,7 @@ export default function StatisticsPage() {
             Общая статистика
           </h2>
           {!generalStats && (
-            <div className="flex items-center justify-center py-8">
-              <HieroglyphCycler />
-            </div>
+            <div className="my-8 flex items-center justify-center min-h-[140px]"><HieroglyphCycler /></div>
           )}
           {generalStats && <GeneralStatsComponent stats={generalStats} />}
         </div>
@@ -61,9 +59,7 @@ export default function StatisticsPage() {
             Хроники сессий
           </h2>
           {sessionStats.length === 0 && (
-            <div className="flex items-center justify-center py-6">
-              <HieroglyphCycler />
-            </div>
+            <div className="my-6 flex items-center justify-center min-h-[160px]"><HieroglyphCycler size="lg" /></div>
           )}
           <SessionStatsComponent stats={sessionStats} />
         </div>

@@ -78,29 +78,40 @@ export default function MaterialsPage() {
   return (
     <div className="min-h-screen marble-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {materials.length === 0 && (
-          <div className="flex items-center justify-center py-8">
-            <HieroglyphCycler size="lg" />
-          </div>
-        )}
         <MaterialsHeader />
 
-        <MaterialsStats materials={materials} stats={stats} />
+        {materials.length === 0 ? (
+          <div className="my-8 flex items-center justify-center min-h-[120px]"><HieroglyphCycler /></div>
+        ) : (
+          <MaterialsStats materials={materials} stats={stats} />
+        )}
 
-        <MaterialsFilters
-          filters={filters}
-          locations={locations}
-          sessions={sessions}
-          onFilterChange={handleFilterChange}
-          onClearFilters={clearFilters}
-        />
+        {materials.length === 0 ? (
+          <div className="my-6 flex items-center justify-center min-h-[80px]"><HieroglyphCycler /></div>
+        ) : (
+          <MaterialsFilters
+            filters={filters}
+            locations={locations}
+            sessions={sessions}
+            onFilterChange={handleFilterChange}
+            onClearFilters={clearFilters}
+          />
+        )}
 
-        <MaterialsCounter count={filteredMaterials.length} />
+        {materials.length === 0 ? (
+          <div className="my-4 flex items-center justify-center min-h-[40px]"><HieroglyphCycler /></div>
+        ) : (
+          <MaterialsCounter count={filteredMaterials.length} />
+        )}
 
-        <MaterialsList
-          materials={filteredMaterials}
-          onMaterialClick={handleMaterialClick}
-        />
+        {materials.length === 0 ? (
+          <div className="my-8 flex items-center justify-center min-h-[200px]"><HieroglyphCycler size="lg" /></div>
+        ) : (
+          <MaterialsList
+            materials={filteredMaterials}
+            onMaterialClick={handleMaterialClick}
+          />
+        )}
 
         <MaterialModal
           material={selectedMaterial}

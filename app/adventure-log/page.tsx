@@ -27,11 +27,6 @@ export default function AdventureLogPage() {
   return (
     <div className="min-h-screen marble-bg">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {journalEntries.length === 0 && (
-          <div className="flex items-center justify-center py-6">
-            <HieroglyphCycler />
-          </div>
-        )}
         <div className="text-center mb-16 animate-fade-in-up">
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-primary mb-4">Дневник приключений</h1>
           <div className="flex justify-center mb-6">
@@ -42,13 +37,21 @@ export default function AdventureLogPage() {
           </p>
         </div>
 
-        <JournalList
-          entries={journalEntries}
-          expandedEntry={expandedEntry}
-          onToggleEntry={toggleEntry}
-        />
+        {journalEntries.length === 0 ? (
+          <div className="my-8 flex items-center justify-center min-h-[160px]"><HieroglyphCycler size="lg" /></div>
+        ) : (
+          <JournalList
+            entries={journalEntries}
+            expandedEntry={expandedEntry}
+            onToggleEntry={toggleEntry}
+          />
+        )}
 
-        <Timeline entries={journalEntries} />
+        {journalEntries.length === 0 ? (
+          <div className="my-8 flex items-center justify-center min-h-[120px]"><HieroglyphCycler /></div>
+        ) : (
+          <Timeline entries={journalEntries} />
+        )}
       </div>
     </div>
   )
