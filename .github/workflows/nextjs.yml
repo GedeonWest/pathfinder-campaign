@@ -109,40 +109,40 @@ jobs:
             exit 0
           fi
           python3 - << 'PY'
-import os, json, urllib.request, shutil
-api_key = os.environ.get('NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY')
-spreadsheet_id = os.environ.get('NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID')
-range_ = 'Characters!A1:Z'
-url = f'https://sheets.googleapis.com/v4/spreadsheets/{spreadsheet_id}/values/{urllib.parse.quote(range_)}?key={api_key}'
-try:
-    with urllib.request.urlopen(url) as resp:
-        data = json.load(resp)
-        values = data.get('values') or []
-        if not values:
-            raise SystemExit(0)
-        headers = values[0]
-        try:
-            id_idx = headers.index('id')
-        except ValueError:
-            raise SystemExit(0)
-        ids = [row[id_idx] for row in values[1:] if len(row) > id_idx and row[id_idx].strip()]
-        out_root = 'out/pathfinder-campaign/characters'
-        src_html = 'out/index.html'
-        if not os.path.isfile(src_html):
-            src_html = 'out/pathfinder-campaign/index.html' if os.path.isfile('out/pathfinder-campaign/index.html') else None
-        if not src_html:
-            raise SystemExit(0)
-        os.makedirs(out_root, exist_ok=True)
-        for cid in ids:
-            d = os.path.join(out_root, cid)
-            os.makedirs(d, exist_ok=True)
-            shutil.copyfile(src_html, os.path.join(d, 'index.html'))
-            # also flat html
-            shutil.copyfile(src_html, os.path.join(out_root, f'{cid}.html'))
-        print(f"Generated placeholders for {len(ids)} character routes")
-except Exception as e:
-    print('Sheets placeholder generation skipped:', e)
-    pass
+  import os, json, urllib.request, shutil
+  api_key = os.environ.get('NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY')
+  spreadsheet_id = os.environ.get('NEXT_PUBLIC_GOOGLE_SHEETS_SPREADSHEET_ID')
+  range_ = 'Characters!A1:Z'
+  url = f'https://sheets.googleapis.com/v4/spreadsheets/{spreadsheet_id}/values/{urllib.parse.quote(range_)}?key={api_key}'
+  try:
+      with urllib.request.urlopen(url) as resp:
+          data = json.load(resp)
+          values = data.get('values') or []
+          if not values:
+              raise SystemExit(0)
+          headers = values[0]
+          try:
+              id_idx = headers.index('id')
+          except ValueError:
+              raise SystemExit(0)
+          ids = [row[id_idx] for row in values[1:] if len(row) > id_idx and row[id_idx].strip()]
+          out_root = 'out/pathfinder-campaign/characters'
+          src_html = 'out/index.html'
+          if not os.path.isfile(src_html):
+              src_html = 'out/pathfinder-campaign/index.html' if os.path.isfile('out/pathfinder-campaign/index.html') else None
+          if not src_html:
+              raise SystemExit(0)
+          os.makedirs(out_root, exist_ok=True)
+          for cid in ids:
+              d = os.path.join(out_root, cid)
+              os.makedirs(d, exist_ok=True)
+              shutil.copyfile(src_html, os.path.join(d, 'index.html'))
+              # also flat html
+              shutil.copyfile(src_html, os.path.join(out_root, f'{cid}.html'))
+          print(f"Generated placeholders for {len(ids)} character routes")
+  except Exception as e:
+      print('Sheets placeholder generation skipped:', e)
+      pass
 PY
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
