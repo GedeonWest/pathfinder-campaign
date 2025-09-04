@@ -47,7 +47,7 @@ export function GeneralStatsComponent({ stats }: GeneralStatsProps) {
               ))}
             </div>
           ) : (
-            <p className="text-foreground/70 text-center py-4">Пока смертей не было</p>
+            <p className="text-foreground/70 text-center py-4">Пока смертей не было =(</p>
           )}
         </CardContent>
       </Card>
