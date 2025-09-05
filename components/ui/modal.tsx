@@ -23,7 +23,7 @@ export function Modal({ isOpen, onClose, children, className }: ModalProps) {
         "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl max-h-[90vh] mx-4 outline-none",
         className
       )}
-      overlayClassName="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center cursor-pointer"
+      overlayClassName="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center cursor-pointer overflow-x-hidden"
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
       closeTimeoutMS={300}

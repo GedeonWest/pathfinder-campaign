@@ -41,10 +41,10 @@ const breakpointColumns = {
 }
 
   return (
-    <div className="min-h-screen marble-bg">
+    <div className="min-h-screen marble-bg overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-16 animate-fade-in-up">
-          <h1 className="font-serif text-5xl md:text-6xl font-bold text-primary mb-4 tracking-wider">ПЕРСОНАЖИ</h1>
+          <h1 className="font-serif text-4xl md:text-6xl font-bold text-primary mb-4 tracking-wider">ПЕРСОНАЖИ</h1>
           <div className="flex justify-center mb-6">
             <div className="w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
           </div>
@@ -56,7 +56,7 @@ const breakpointColumns = {
 
 
         {/* Второй блок - черно-белые карточки в шахматном порядке */}
-        <section className="z-30 relative min-h-[200px]">
+        <section className="z-30 relative min-h-[200px] overflow-x-hidden">
           {charactersBW.length === 0 ? (
             <div className="flex items-center justify-center py-16">
               <HieroglyphCycler size="lg" />
