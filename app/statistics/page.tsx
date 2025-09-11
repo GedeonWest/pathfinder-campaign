@@ -4,6 +4,7 @@ import { fetchGeneralStats, fetchSessionStats } from "@/lib/statistics"
 import { GeneralStatsComponent, SessionStatsComponent } from "@/components/statistics"
 import { useEffect, useState } from "react"
 import { HieroglyphCycler } from "@/components/ui"
+import { CampaignStats } from "@/components/sections/campaign-stats"
 
 export default function StatisticsPage() {
   const [generalStats, setGeneralStats] = useState<any>(null)
@@ -49,6 +50,13 @@ export default function StatisticsPage() {
             <div className="my-8 flex items-center justify-center min-h-[140px]"><HieroglyphCycler /></div>
           )}
           {generalStats && <GeneralStatsComponent stats={generalStats} />}
+        </div>
+      </section>
+
+      {/* Custom Counters Section */}
+      <section className="py-4 px-4">
+        <div className="max-w-6xl mx-auto">
+          <CampaignStats />
         </div>
       </section>
 

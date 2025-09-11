@@ -106,7 +106,7 @@ export function getMaterialsByCharacter(materials: Material[], characterName: st
   return materials.filter(material => material.collectedBy === characterName)
 }
 
-export function sortMaterials(materials: Material[], sortBy: 'name' | 'date' | 'type'): Material[] {
+export function sortMaterials(materials: Material[], sortBy: 'name' | 'date' | 'type' | 'id'): Material[] {
   const sorted = [...materials]
 
   switch (sortBy) {
@@ -121,6 +121,8 @@ export function sortMaterials(materials: Material[], sortBy: 'name' | 'date' | '
       })
     case 'type':
       return sorted.sort((a, b) => a.type.localeCompare(b.type))
+    case 'id':
+      return sorted.sort((a, b) => String(a.id).localeCompare(String(b.id)))
     default:
       return sorted
   }

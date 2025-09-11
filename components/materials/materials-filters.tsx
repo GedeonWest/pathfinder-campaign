@@ -114,6 +114,7 @@ export function MaterialsFilters({
                     <SelectItem value="name">По названию</SelectItem>
                     <SelectItem value="date">По дате</SelectItem>
                     <SelectItem value="type">По типу</SelectItem>
+                    <SelectItem value="id">По ID</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
