@@ -85,11 +85,11 @@ const breakpointColumns = {
           <ModalBody className="p-0">
             {active && (
               <div className="w-full">
-                <div className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+                <div className="relative h-[40vh] md:h-[55vh] overflow-hidden">
                   <img
                     src={active.image ? getImagePath(active.image) : getImagePath('./placeholder.svg')}
                     alt={active.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain md:object-cover md:object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6">

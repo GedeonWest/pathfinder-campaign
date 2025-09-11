@@ -38,7 +38,7 @@ export function MaterialsFilters({
                   placeholder="Поиск по названию, описанию или тегам..."
                   value={filters.searchQuery}
                   onChange={(e) => onFilterChange('searchQuery', e.target.value)}
-                  className="pl-10"
+                  className="pl-10 w-full"
                 />
               </div>
             </div>

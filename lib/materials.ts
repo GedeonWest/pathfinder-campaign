@@ -79,9 +79,12 @@ export function getMaterialsByType(materials: Material[]): Record<string, Materi
   }
 
   materials.forEach(material => {
-    if (grouped[material.type]) {
-      grouped[material.type].push(material)
+    const key = (material.type as keyof typeof grouped) || 'misc'
+    if (!grouped[key]) {
+      grouped.misc.push(material)
+      return
     }
+    grouped[key].push(material)
   })
 
   return grouped

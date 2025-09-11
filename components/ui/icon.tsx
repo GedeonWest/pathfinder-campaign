@@ -273,4 +273,47 @@ export const WrenchIcon = forwardRef<SVGSVGElement, IconProps>(
   )
 )
 
+// Дополнительные иконки для персонажей
+export const BowIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ className, ...props }, ref) => (
+    <Icon
+      ref={ref}
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M21 3l-4 4-2-2-2 2 2 2-4 4-2-2-2 2 2 2-4 4 2 2 4-4 2 2 2-2-2-2 4-4 2 2 2-2-2-2 4-4-2-2z" />
+    </Icon>
+  )
+)
+
+export const ArrowIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ className, ...props }, ref) => (
+    <Icon
+      ref={ref}
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M2 12l8-2-2 8 3-3 7 7 2-2-7-7 3-3-8 2 2-8-8 8z" />
+    </Icon>
+  )
+)
+
+export const VialIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ className, ...props }, ref) => (
+    <Icon
+      ref={ref}
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M7 2h10v2h-2v3.59l3.71 3.7a5 5 0 01-7.07 7.07L8 14.36V4H7V2zm3 4v8.59l3.29 3.3a3 3 0 104.24-4.24L14 9.41V4h-4z" />
+    </Icon>
+  )
+)
+
 export { Icon }
