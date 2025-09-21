@@ -56,6 +56,10 @@ export function getImagePath(src: string) {
   if (src.startsWith('/pathfinder-campaign')) {
     return src
   }
+  // Абсолютные URL (http, https, protocol-relative, data, blob) не префиксим
+  if (/^(https?:\/\/|data:|blob:|\/\/)/i.test(src)) {
+    return src
+  }
   // Если src начинается с /, убираем / и добавляем basePath
   if (src.startsWith('/')) {
     return '/pathfinder-campaign' + src
