@@ -47,12 +47,20 @@ export function CampaignMap() {
             Карта земель Вати
           </ModalHeader>
           <ModalBody className="p-0">
-            <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden border border-primary/30 shadow-2xl">
-              <img
-                src={getImagePath("/map.png")}
-                alt="Карта кампании"
-                className="w-full h-full object-cover"
-              />
+            <div className="w-full rounded-lg overflow-hidden border border-primary/30 shadow-2xl">
+              <div className="relative">
+                <div className="absolute inset-0 bg-background/50" style={{ display: 'none' }}></div>
+                <div className="mx-auto" style={{ maxWidth: '1148px' }}>
+                  {/* Используем соотношение 574:249 ~ 2.305 */}
+                  <div className="relative" style={{ paddingTop: `${(249/574)*100}%` }}>
+                    <img
+                      src={getImagePath("/map.png")}
+                      alt="Карта кампании"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </ModalBody>
         </ModalContent>

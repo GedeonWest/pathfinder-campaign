@@ -52,8 +52,30 @@ export default function NPCsPage() {
                       <div className="flex flex-wrap gap-2">
                         {npc.faction && (<Badge variant="outline" className="text-xs border-primary/40">{npc.faction}</Badge>)}
                         {npc.location && (<Badge variant="secondary" className="text-xs bg-primary/15 text-primary">{npc.location}</Badge>)}
-                        {npc.hostility && (<Badge variant="outline" className="text-xs border-primary/40">{npc.hostility}</Badge>)}
-                        {npc.status && (<Badge variant="outline" className="text-xs border-primary/40">{npc.status}</Badge>)}
+                        {npc.hostility && (
+                          <Badge
+                            variant="outline"
+                            className={`text-xs border-primary/40 ${
+                              npc.hostility === 'friendly' ? 'bg-emerald-900/30 text-emerald-300 border-emerald-500/40' :
+                              npc.hostility === 'neutral' ? 'bg-amber-900/30 text-amber-300 border-amber-500/40' :
+                              'bg-red-900/30 text-red-300 border-red-500/40'
+                            }`}
+                          >
+                            {npc.hostility === 'friendly' ? 'Дружественный' : npc.hostility === 'neutral' ? 'Нейтральный' : 'Враждебный'}
+                          </Badge>
+                        )}
+                        {npc.status && (
+                          <Badge
+                            variant="outline"
+                            className={`text-xs border-primary/40 ${
+                              npc.status === 'alive' ? 'bg-emerald-900/30 text-emerald-300 border-emerald-500/40' :
+                              npc.status === 'dead' ? 'bg-red-900/30 text-red-300 border-red-500/40' :
+                              'bg-slate-800/50 text-slate-300 border-slate-500/40'
+                            }`}
+                          >
+                            {npc.status === 'alive' ? 'Жив' : npc.status === 'dead' ? 'Погиб' : 'Неизвестно'}
+                          </Badge>
+                        )}
                       </div>
                     </div>
                   </CardContent>
@@ -78,8 +100,30 @@ export default function NPCsPage() {
                       {active.role && (<Badge variant="outline" className="bg-primary/20 text-primary border-primary/40">{active.role}</Badge>)}
                       {active.faction && (<Badge variant="secondary" className="bg-white/20 text-white border-white/30">{active.faction}</Badge>)}
                       {active.location && (<Badge variant="secondary" className="bg-white/20 text-white border-white/30">{active.location}</Badge>)}
-                      {active.hostility && (<Badge variant="outline" className="bg-primary/10 text-primary border-primary/30">{active.hostility}</Badge>)}
-                      {active.status && (<Badge variant="outline" className="bg-primary/10 text-primary border-primary/30">{active.status}</Badge>)}
+                      {active.hostility && (
+                        <Badge
+                          variant="outline"
+                          className={`${
+                            active.hostility === 'friendly' ? 'bg-emerald-900/30 text-emerald-300 border-emerald-500/40' :
+                            active.hostility === 'neutral' ? 'bg-amber-900/30 text-amber-300 border-amber-500/40' :
+                            'bg-red-900/30 text-red-300 border-red-500/40'
+                          }`}
+                        >
+                          {active.hostility === 'friendly' ? 'Дружественный' : active.hostility === 'neutral' ? 'Нейтральный' : 'Враждебный'}
+                        </Badge>
+                      )}
+                      {active.status && (
+                        <Badge
+                          variant="outline"
+                          className={`${
+                            active.status === 'alive' ? 'bg-emerald-900/30 text-emerald-300 border-emerald-500/40' :
+                            active.status === 'dead' ? 'bg-red-900/30 text-red-300 border-red-500/40' :
+                            'bg-slate-800/50 text-slate-300 border-slate-500/40'
+                          }`}
+                        >
+                          {active.status === 'alive' ? 'Жив' : active.status === 'dead' ? 'Погиб' : 'Неизвестно'}
+                        </Badge>
+                      )}
                     </div>
                   </div>
                 </div>
