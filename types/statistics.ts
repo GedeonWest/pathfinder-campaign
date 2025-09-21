@@ -34,6 +34,11 @@ export interface GeneralStats {
   mapsDrawn: number
   masterCritsTotal: number
   masterCritsByDash: number
+  // Дополнительные поля (могут отсутствовать в таблице)
+  ourCritsByMaster?: number
+  masterCritsNotConfirmed?: number
+  ourCritsNotConfirmed?: number
+  dashConfirmedParry?: number
 }
 
 export interface StatisticsData {

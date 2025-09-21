@@ -34,6 +34,10 @@ export async function fetchGeneralStats(): Promise<GeneralStats> {
     mapsDrawn: toNumber(first.mapsDrawn),
     masterCritsTotal: toNumber(first.masterCritsTotal),
     masterCritsByDash: toNumber(first.masterCritsByDash),
+    ourCritsByMaster: toNumber((first as any).ourCritsByMaster),
+    masterCritsNotConfirmed: toNumber((first as any).masterCritsNotConfirmed),
+    ourCritsNotConfirmed: toNumber((first as any).ourCritsNotConfirmed),
+    dashConfirmedParry: toNumber((first as any).dashConfirmedParry),
   }
 }
 
