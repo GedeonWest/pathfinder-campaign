@@ -46,6 +46,9 @@ export default function Header() {
               <Link href={getLink(ROUTES.MATERIALS)} variant="default">
                 Материалы
               </Link>
+              <Link href={getLink(ROUTES.NPCS)} variant="default">
+                НПС
+              </Link>
             </Flex>
           </nav>
 
@@ -104,6 +107,14 @@ export default function Header() {
                   className="px-2 py-1"
                 >
                   Материалы
+                </Link>
+                <Link
+                  href={getLink(ROUTES.NPCS)}
+                  variant="default"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="px-2 py-1"
+                >
+                  НПС
                 </Link>
               </Stack>
             </nav>

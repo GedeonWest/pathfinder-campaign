@@ -6,6 +6,7 @@ export const ROUTES = {
   STATISTICS: '/statistics/',
   ADVENTURE_LOG: '/adventure-log/',
   MATERIALS: '/materials/',
+  NPCS: '/npcs/',
   TEST_HIEROJAX: '/test-hierojax/',
 
   // Динамические маршруты

@@ -28,7 +28,7 @@ export function MaterialsFilters({
         <CardContent className="p-6">
           <Stack spacing="lg">
             {/* Поиск */}
-            <div>
+            <div className="w-full">
               <label className="text-sm font-medium text-foreground mb-2 block">
                 Поиск
               </label>
