@@ -1,5 +1,33 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { format, parse, isValid, parseISO } from "date-fns"
+
+// Try to parse a date string with multiple common formats and output as DD.MM.YYYY
+export function formatDateRu(input: string | Date | undefined | null): string {
+  if (!input) return ""
+  const tryDate = (d: Date) => (isValid(d) ? format(d, "dd.MM.yyyy") : "")
+  if (input instanceof Date) return tryDate(input)
+  const s = String(input).trim()
+  if (!s) return ""
+  // 1) DD.MM.YYYY
+  let d = parse(s, "dd.MM.yyyy", new Date())
+  if (isValid(d)) return format(d, "dd.MM.yyyy")
+  // 2) D.M.YYYY
+  d = parse(s, "d.M.yyyy", new Date())
+  if (isValid(d)) return format(d, "dd.MM.yyyy")
+  // 3) DD.MM.YY
+  d = parse(s, "dd.MM.yy", new Date())
+  if (isValid(d)) return format(d, "dd.MM.yyyy")
+  // 4) Natural language RU like "15 марта 2024" — leave as is (date-fns ru parse requires locale pkg; skipping for now)
+  if (/\d{1,2}\s+\D+\s+\d{4}/.test(s)) return s
+  // 5) ISO or US
+  d = parseISO(s)
+  if (isValid(d)) return format(d, "dd.MM.yyyy")
+  // 6) Fallback Date constructor
+  d = new Date(s)
+  if (isValid(d)) return format(d, "dd.MM.yyyy")
+  return s
+}
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))

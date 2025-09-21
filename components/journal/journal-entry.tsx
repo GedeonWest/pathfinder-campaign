@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Calendar, MapPin, ChevronDown, ChevronUp } from "lucide-react"
 import { JournalEntry } from "@/types/journal"
+import { formatDateRu } from "@/lib/utils"
 
 interface JournalEntryProps {
   entry: JournalEntry
@@ -36,7 +37,7 @@ export function JournalEntryComponent({ entry, index, isExpanded, onToggle }: Jo
             <div className="flex flex-wrap items-center gap-4 text-sm text-foreground/70 mb-2">
               <div className="flex items-center space-x-1">
                 <Calendar className="w-4 h-4 text-primary" />
-                <span>{entry.date}</span>
+                <span>{formatDateRu(entry.date)}</span>
               </div>
               <div className="flex items-center space-x-1">
                 <MapPin className="w-4 h-4 text-primary" />

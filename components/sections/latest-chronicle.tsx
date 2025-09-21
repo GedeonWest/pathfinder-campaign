@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { useEffect, useMemo, useState } from "react"
 import { fetchAllJournalEntries } from "@/lib/journal"
 import { HieroglyphCycler } from "@/components/ui"
+import { formatDateRu } from "@/lib/utils"
 
 export function LatestChronicle() {
   const [loading, setLoading] = useState(true)
@@ -41,7 +42,7 @@ export function LatestChronicle() {
                 <div className="text-primary text-2xl">📜</div>
                 <div>
                   <h4 className="font-serif text-xl font-bold text-primary mb-2">{title || "—"}</h4>
-                  <p className="text-sm text-foreground/70 font-sans mb-4">{date || "—"}</p>
+                  <p className="text-sm text-foreground/70 font-sans mb-4">{formatDateRu(date) || "—"}</p>
                 </div>
               </div>
               <p className="text-foreground/90 leading-relaxed font-sans">
